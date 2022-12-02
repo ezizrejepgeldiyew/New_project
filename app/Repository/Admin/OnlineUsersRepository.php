@@ -1,8 +1,8 @@
 <?php
 
-namespace App\Repository;
+namespace App\Repository\Admin;
 
-use App\Contracts\OnlineUsersInterface;
+use App\Contracts\Admin\OnlineUsersInterface;
 use App\Models\User;
 
 class OnlineUsersRepository implements OnlineUsersInterface

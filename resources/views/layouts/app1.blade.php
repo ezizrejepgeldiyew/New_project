@@ -64,9 +64,9 @@
         <ul class="sidebar-nav" id="sidebar-nav">
 
             <li class="nav-item">
-                <a class="@if (Request::routeIs('adminindex')) nav-link @else
+                <a class="@if (Request::routeIs('admin.index')) nav-link @else
                 nav-link collapsed @endif "
-                    href="{{ route('adminindex') }}">
+                    href="{{ route('admin.index') }}">
                     <i class="bi bi-grid"></i>
                     <span>Dashboard</span>
                 </a>
@@ -103,14 +103,14 @@
                 </a>
                 <ul id="orders" class="nav-content collapse " data-bs-parent="#sidebar-nav">
                     <li class="">
-                        <a href="{{ route('orders_false') }}">
+                        <a href="{{ route('admin.orders_false') }}">
                             <i class="bi bi-circle"></i>
                             <span>Ugradylmadyk</span>
                         </a>
                     </li>
 
                     <li class="">
-                        <a href="{{ route('orders_true') }}">
+                        <a href="{{ route('admin.orders_true') }}">
                             <i class="bi bi-circle"></i>
                             <span>Ugradylan</span>
                         </a>
@@ -140,8 +140,8 @@
             </li>
 
             <li class="nav-item">
-                <a href="{{ route('online_users') }}"
-                    class="@if (Request::routeIs('online_users')) nav-link @else
+                <a href="{{ route('online_users.index') }}"
+                    class="@if (Request::routeIs('online_users.index')) nav-link @else
                 nav-link collapsed @endif">
                     <i class="bi bi-box"></i>
                     <span>Ulgamdaky ulanyjylar</span>

@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Contracts;
+namespace App\Contracts\Admin;
 
 use App\Http\Requests\CreateProductRequests;
 
@@ -14,6 +14,8 @@ interface ProductInterface
 
     public function destroy($id);
 
-    public function update_money($id);
+    public function find($id);
+
+    public function random();
 }
 

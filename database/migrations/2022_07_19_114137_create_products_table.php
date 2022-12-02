@@ -21,6 +21,7 @@ class CreateProductsTable extends Migration
             $table->string('ourbrand_id');
             $table->string('name');
             $table->string('price');
+            $table->string('discount')->nullable();
             $table->text('description');
             $table->string('rating')->nullable();
             $table->string('show')->nullable();

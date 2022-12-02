@@ -4,7 +4,7 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use App\Http\Requests\MoneyCoursRequest;
-use App\Repository\MoneyCoursRepository;
+use App\Repository\Admin\MoneyCoursRepository;
 
 class MoneyCoursController extends Controller
 {

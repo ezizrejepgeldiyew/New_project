@@ -1,10 +1,11 @@
 <?php
 
-namespace App\Repository;
+namespace App\Repository\Admin;
 
-use App\Contracts\NoticesInterface;
+use App\Contracts\Admin\NoticesInterface;
 use App\Http\Requests\NoticesRequest;
 use App\Models\Notices;
+use App\Repository\PhotoSettings;
 
 class NoticesRepository implements NoticesInterface
 {
@@ -30,7 +31,7 @@ class NoticesRepository implements NoticesInterface
     public function update(NoticesRequest $request, $id)
     {
         $notices = $this->find($id);
-        $data = $request->all();     
+        $data = $request->all();
         $data['photo'] = PhotoSettings::UpdatePhoto($data['photo'], $this->PhotoFolder, $notices['photo']);
         return $notices->update($data);
     }

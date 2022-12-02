@@ -3,9 +3,7 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
-use App\Models\ProductDownloads;
-use App\Repository\ProductDownloadsRepository;
-use Illuminate\Http\Request;
+use App\Repository\Admin\ProductDownloadsRepository;
 
 class ProductDownloadsController extends Controller
 {

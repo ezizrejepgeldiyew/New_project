@@ -1,10 +1,11 @@
 <?php
 
-namespace App\Repository;
+namespace App\Repository\Admin;
 
-use App\Contracts\OurBrandInterface;
+use App\Contracts\Admin\OurBrandInterface;
 use App\Http\Requests\CreateOurBrandRequests;
 use App\Models\ourbrand;
+use App\Repository\PhotoSettings;
 
 class OurBrandRepository implements OurBrandInterface
 {

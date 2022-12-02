@@ -1,15 +1,8 @@
 @extends('layouts.app2')
 @section('skilet')
-
-
-
     <div class="section">
-        <!-- container -->
         <div class="container">
-            <!-- row -->
             <div class="row">
-
-
                 <table id="cart" class="table table-hover table-condensed">
                     <thead>
                         <tr>
@@ -29,7 +22,7 @@
                                     <td data-th="Product">
                                         <div class="row">
                                             <div class="col-sm-3 hidden-xs"><a
-                                                    href="{{ route('product1', ['product' => $id]) }}"><img
+                                                    href="{{ route('show', $id) }}"><img
                                                         src="{{ asset('images/' . $details['image']) }}" width="100"
                                                         height="100" class="img-responsive" /></a></div>
                                             <div class="col-sm-9">
@@ -42,9 +35,12 @@
                                         <input type="number" value="{{ $details['quantity'] }}"
                                             class="form-control quantity update-cart" />
                                     </td>
-                                    <td data-th="Subtotal"  class="text-center">
-                                        <span class="prod{{ $id }} product">{{ $details['price'] * $details['quantity'] }} </span>TMT</td>
-                                    <td class="actions"  data-th="">
+                                    <td data-th="Subtotal" class="text-center">
+                                        <span
+                                            class="prod{{ $id }} product">{{ $details['price'] * $details['quantity'] }}
+                                        </span>TMT
+                                    </td>
+                                    <td class="actions" data-th="">
                                         <button class="btn btn-danger btn-sm remove-from-cart"><i
                                                 class="fa fa-trash-o"></i></button>
                                     </td>
@@ -71,7 +67,7 @@
             </div>
         </div>
     </div>
-    @section('cart_scripts')
+@section('cart_scripts')
     <script>
         $(".update-cart").change(function() {
             var ele = $(this);
@@ -80,14 +76,14 @@
                 quantity: ele.parents("tr").find(".quantity").val(),
                 _token: "{{ csrf_token() }}"
             }
-            $.post('{{ route('update.cart') }}', data, function(response1) {
+            $.post('{{ route('cartjquery.update') }}', data, function(response1) {
                 let response = response1[0];
                 let iid = ".prod" + response.id;
                 $(iid).html(response.price * response.quantity);
                 let elements = document.getElementsByClassName("product");
                 let sum = 0;
-                for (let elemnt of elements){
-                    sum += parseInt(elemnt.innerText) ;
+                for (let elemnt of elements) {
+                    sum += parseInt(elemnt.innerText);
                 }
                 $(".pro_total").html(sum);
 
@@ -99,8 +95,11 @@
                 $.each(response2, function($key, $element) {
                     sum1++;
                     text = ''
-                    text += '<div class="product-widget"> <div class="product-img"><img src='+link
-                    text += '/' + $element.image + ' alt="" ></div> <div class="product-body" ><h3 class="product-name"> <a href="#">'+ $element.name + '</a> </h3 ><h4 class="product-price"><span class="qty"> ' + $element .quantity + 'x </span> $' + $element.price + '</h4></div></div>'
+                    text += '<div class="product-widget"> <div class="product-img"><img src=' + link
+                    text += '/' + $element.image +
+                        ' alt="" ></div> <div class="product-body" ><h3 class="product-name"> <a href="#">' +
+                        $element.name + '</a> </h3 ><h4 class="product-price"><span class="qty"> ' +
+                        $element.quantity + 'x </span> $' + $element.price + '</h4></div></div>'
                     all_text = text + all_text
                 });
                 $('.cart-list').html(all_text)
@@ -112,10 +111,10 @@
             var ele = $(this);
 
             let data = {
-                    _token : "{{ csrf_token() }}",
-                    id : ele.parents("tr").attr("data-id")
-                }
-            $.get('{{ route('remove.from.cart') }}',data,function(response){
+                _token: "{{ csrf_token() }}",
+                id: ele.parents("tr").attr("data-id")
+            }
+            $.get('{{ route('cartjquery.remove') }}', data, function(response) {
                 let new_id = "card" + data.id
                 let element = document.getElementById(new_id)
                 element.remove();
@@ -128,8 +127,11 @@
                     total = total + ($element.quantity * $element.price)
                     sum++;
                     text = ''
-                    text += '<div class="product-widget"> <div class="product-img"><img src='+link
-                    text += '/' + $element.image + ' alt="" ></div> <div class="product-body" ><h3 class="product-name"> <a href="#">'+ $element.name + '</a> </h3 ><h4 class="product-price"><span class="qty"> ' + $element .quantity + 'x </span> $' + $element.price + '</h4></div></div>'
+                    text += '<div class="product-widget"> <div class="product-img"><img src=' + link
+                    text += '/' + $element.image +
+                        ' alt="" ></div> <div class="product-body" ><h3 class="product-name"> <a href="#">' +
+                        $element.name + '</a> </h3 ><h4 class="product-price"><span class="qty"> ' +
+                        $element.quantity + 'x </span> $' + $element.price + '</h4></div></div>'
                     all_text = text + all_text
                 });
                 $('.cart-list').html(all_text)
@@ -138,5 +140,5 @@
             });
         });
     </script>
-    @endsection
+@endsection
 @endsection

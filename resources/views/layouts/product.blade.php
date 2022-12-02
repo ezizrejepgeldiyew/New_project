@@ -38,7 +38,7 @@
                     wishlist</span></button>
             <button class="add-to-compare"><i class="fa fa-exchange"></i><span class="tooltipp">add to
                     compare</span></button>
-            <button class="quick-view"><a href="{{ route('product1', ['product' => $item->id]) }}"><i
+            <button class="quick-view"><a href="{{ route('show', $item->id) }}"><i
                         class="fa fa-eye"></i></a><span class="tooltipp">quick view</span></button>
         </div>
     </div>
@@ -58,7 +58,7 @@
                 _token: "{{ csrf_token() }}"
             }
 
-            $.get('{{ route('add.to.cart') }}', data, function(response) {
+            $.get('{{ route('cartjquery.store') }}', data, function(response) {
                 let sum = 0
                 let link = "{{ asset('images/') }}"
                 let all_text = ''
@@ -78,32 +78,6 @@
             });
         }
 
-        function myWishFunction(id) {
-            data = {
-                id: id,
-                _token: "{{ csrf_token() }}"
-            }
-            $.get('{{ route('add.to.wish') }}', data, function(response) {
-                let sum = 0
-                let link = "{{ asset('images/') }}"
-                let all_text = ''
-                $.each(response, function($key, $item) {
-                    sum++
-                    text = ''
-                    text += '<div class="product-widget"> <div class="product-img"> <img src=' + link
-                    text += '/' + $item.image +
-                        '></div><div class="product-body"><h3 class="product-name">' + $item.name +
-                        '</h3></div></div>'
-                    all_text = all_text + text
-                });
-                $('.wish_qty').html(sum)
-                $('.cart-list1').html(all_text)
-
-                $("#fav" + id).removeClass('fa-heart-o');
-                $("#fav" + id).addClass('fa-heart');
-
-                // $("#fav"+id).classList.add("fa-heart")
-            });
-        }
+       
     </script>
 @endsection

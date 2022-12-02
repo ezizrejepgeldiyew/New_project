@@ -4,7 +4,7 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use App\Http\Requests\CreateOurBrandRequests;
-use App\Repository\OurBrandRepository;
+use App\Repository\Admin\OurBrandRepository;
 
 class OurBrandController extends Controller
 {

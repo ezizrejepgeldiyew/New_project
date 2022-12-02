@@ -4,7 +4,7 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use App\Http\Requests\NoticesRequest;
-use App\Repository\NoticesRepository;
+use App\Repository\Admin\NoticesRepository;
 
 class NoticesController extends Controller
 {

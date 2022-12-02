@@ -4,15 +4,15 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
-use Illuminate\Http\Request;
+
 use Illuminate\Support\Facades\Session;
-use Illuminate\Support\Facades\Storage;
+
 
 class product extends Model
 {
     use HasFactory;
 
-    protected $fillable = ['photo', 'photos', 'category_id', 'ourbrand_id', 'name', 'price', 'description',  'rating', 'show'];
+    protected $fillable = ['photo', 'photos', 'category_id', 'ourbrand_id', 'name', 'price', 'discount', 'description',  'rating', 'show'];
 
     public function category()
     {

@@ -1,10 +1,9 @@
 <?php
 
-namespace App\Repository;
+namespace App\Repository\Admin;
 
-use App\Contracts\ProductDownloadsInterface;
+use App\Contracts\Admin\ProductDownloadsInterface;
 use App\Models\ProductDownloads;
-use Illuminate\Support\Facades\DB;
 
 class ProductDownloadsRepository implements ProductDownloadsInterface
 

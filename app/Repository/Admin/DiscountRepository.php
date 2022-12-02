@@ -1,13 +1,11 @@
 <?php
 
-namespace App\Repository;
+namespace App\Repository\Admin;
 
-use App\Contracts\DiscountInterface;
+use App\Contracts\Admin\DiscountInterface;
 use App\Models\Discount;
 use App\Models\product;
-use DateTimeZone;
 use Illuminate\Support\Facades\DB;
-use Illuminate\Support\Facades\Request;
 
 class DiscountRepository implements DiscountInterface
 {

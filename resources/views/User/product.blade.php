@@ -1,11 +1,9 @@
 @extends('layouts.app2')
 @section('skilet')
 
-    <!-- SECTION -->
     <div class="section">
         <div class="container">
             <div class="row">
-                <!-- Product main img -->
                 <div class="col-md-5 col-md-push-2">
                     <div id="product-main-img">
                         <div class="product-preview">
@@ -32,12 +30,14 @@
 
                     </div>
                 </div>
-                <!-- /Product thumb imgs -->
 
-                <!-- Product details -->
+                @php
+                    $all = 0;
+                    foreach ($count as $item) {
+                        $all = $all + $item;
+                    }
+                @endphp
                 <div class="col-md-5">
-
-
                     <div class="product-details" data-id="{{ $product->id }}">
                         <h2 class="product-name">{{ $product->name }}</h2>
                         <div>
@@ -58,14 +58,6 @@
                         <p>{{ $product->description }}</p>
 
                         <div class="product-options">
-                            <label>
-                                Color
-                                <select class="input-select">
-                                    @foreach (json_decode($product->colors) as $item)
-                                        <option value="0">{{ $item }}</option>
-                                    @endforeach
-                                </select>
-                            </label>
                             <label class="pro_qty">
                                 Qty
                                 <input type="number" value="{{ $cart }}"
@@ -82,29 +74,18 @@
                             <li><a href="#"><i class="fa fa-heart-o"></i> add to wishlist</a></li>
                             <li><a href="#"><i class="fa fa-exchange"></i> add to compare</a></li>
                         </ul>
-                        <ul class="product-links">
-                            <li>Share:</li>
-                            <li><a href="#"><i class="fa fa-facebook"></i></a></li>
-                            <li><a href="#"><i class="fa fa-twitter"></i></a></li>
-                            <li><a href="#"><i class="fa fa-google-plus"></i></a></li>
-                            <li><a href="#"><i class="fa fa-envelope"></i></a></li>
-                        </ul>
                     </div>
                 </div>
-                <!-- Product tab -->
+
                 <div class="col-md-12">
                     <div id="product-tab">
-                        <!-- product tab nav -->
                         <ul class="tab-nav">
                             <li class="active"><a data-toggle="tab" href="#tab1">Description</a></li>
                             <li><a data-toggle="tab" href="#tab2">Details</a></li>
                             <li><a data-toggle="tab" href="#tab3">Reviews ({{ $all }})</a></li>
                         </ul>
-                        <!-- /product tab nav -->
 
-                        <!-- product tab content -->
                         <div class="tab-content">
-                            <!-- tab1  -->
                             <div id="tab1" class="tab-pane fade in active">
                                 <div class="row">
                                     <div class="col-md-12">
@@ -113,7 +94,6 @@
                                 </div>
                             </div>
 
-                            <!-- tab2  -->
                             <div id="tab2" class="tab-pane fade in">
                                 <div class="row">
                                     <div class="col-md-12">
@@ -127,7 +107,6 @@
                                 </div>
                             </div>
 
-                            <!-- tab3  -->
                             <div id="tab3" class="tab-pane fade in">
                                 <div class="row">
                                     <!-- Rating -->
@@ -217,8 +196,7 @@
                                     <!-- Review Form -->
                                     <div class="col-md-3">
                                         <div id="review-form">
-                                            <form class="review-form"
-                                                action="{{ route('review', ['product' => $product->id]) }}"
+                                            <form class="review-form" action="{{ route('show.review', $product->id) }}"
                                                 method="POST">
                                                 @csrf
                                                 <input class="input" type="text" name="name"
@@ -285,7 +263,7 @@
                 id: id,
                 quantity: quantity
             }
-            $.post('{{ route('update.cart') }}', data, function(response1) {
+            $.post('{{ route('cartjquery.update') }}', data, function(response1) {
 
                 if (response1 == false) {
                     let price = parseInt($(".pro_price").attr("value")) * quantity;
@@ -315,7 +293,7 @@
                 id: ele.parents(".product-details").attr("data-id"),
                 quantity: $(".pro_qty input").val()
             }
-            $.get('{{ route('add.to.cart') }}', data, function(response) {
+            $.get('{{ route('cartjquery.store') }}', data, function(response) {
                 let sum1 = response2.length
                 let all_text = ''
 

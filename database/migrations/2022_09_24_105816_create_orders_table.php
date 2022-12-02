@@ -17,7 +17,6 @@ class CreateOrdersTable extends Migration
             $table->id();
             $table->bigInteger('user_id');
             $table->string('product_id');
-            $table->string('quantity');
             $table->boolean('status')->default(false);
             $table->timestamps();
         });

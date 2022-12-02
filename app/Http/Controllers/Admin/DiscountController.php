@@ -3,7 +3,7 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
-use App\Repository\DiscountRepository;
+use App\Repository\Admin\DiscountRepository;
 
 class DiscountController extends Controller
 {

@@ -1,16 +1,13 @@
 <?php
 
-namespace App\Repository;
+namespace App\Repository\Admin;
 
-use App\Contracts\ProductInterface;
+use App\Contracts\Admin\ProductInterface;
 use App\Http\Requests\CreateProductRequests;
 use App\Models\category;
-use App\Models\MoneyCours;
 use App\Models\ourbrand;
 use App\Models\product;
-
-use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Log;
+use App\Repository\PhotoSettings;
 
 class ProductRepository implements ProductInterface
 {
@@ -68,20 +65,9 @@ class ProductRepository implements ProductInterface
         return product::find($id);
     }
 
-    public function update_money( $id)
+    public function random()
     {
-        $money_cours = MoneyCours::find($id);
-        $money = session()->forget('money');
-        $money = session()->get('money', []);
-        if (empty($money[$id])) {
-            $money[$id] = [
-                "id" => $id,
-                "price" => $money_cours->price,
-                "name" => $money_cours->name,
-                "fullname" => $money_cours->fullname,
-            ];
-        }
-        session()->put('money', $money);
-        return response()->json($money, 200);
+        return product::inRandomOrder()->get();
     }
+
 }

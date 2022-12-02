@@ -1,8 +1,8 @@
 <?php
 
-namespace App\Repository;
+namespace App\Repository\Admin;
 
-use App\Contracts\CategoryInterface;
+use App\Contracts\Admin\CategoryInterface;
 use App\Http\Requests\CreateCategoryRequests;
 use App\Models\category;
 

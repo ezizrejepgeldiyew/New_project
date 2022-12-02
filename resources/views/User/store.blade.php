@@ -61,7 +61,7 @@
                                     <img src="{{ asset('images/' . $item->photo) }}" alt="">
                                 </div>
                                 <div class="product-body">
-                                    <p class="product-category">{{ $item->category }}</p>
+                                    <p class="product-category">{{ $item->category->name }}</p>
                                     <h3 class="product-name"><a href="#">{{ $item->name }}</a></h3>
                                     <h4 class="product-price">{{ $item->price }}TMT</h4>
                                 </div>
@@ -90,10 +90,7 @@
                                 </select>
                             </label>
                         </div>
-                        <ul class="store-grid">
-                            <li class="active"><i class="fa fa-th"></i></li>
-                            <li><a href="#"><i class="fa fa-th-list"></i></a></li>
-                        </ul>
+
                     </div>
                     <div class="row hii">
                         @foreach ($product as $item)
@@ -101,13 +98,7 @@
                                 @include('layouts.product')
                             </div>
                         @endforeach
-                        <div class="store-filter clearfix">
-                            <ul class="store-pagination">
-                                <li class="active">1</li>
-                                <li><a href="#">2</a></li>
-                                <li><a href="#"><i class="fa fa-angle-right"></i></a></li>
-                            </ul>
-                        </div>
+
                     </div>
                 </div>
             </div>
@@ -123,7 +114,7 @@
                     text: text
                 }
 
-                $.get('{{ route('search') }}', data, function(response) {
+                $.get('{{ route('store.search_filter') }}', data, function(response) {
                     let all_txt = ''
                     $.each(response, function($key, $item) {
                         all_txt = all_txt + GetHtmlBlade($item)
@@ -143,7 +134,7 @@
                     _token: "{{ csrf_token() }}",
                     id: arr_id
                 }
-                $.get('{{ route('category_checkbox') }}', data, function(response) {
+                $.get('{{ route('store.checkbox_filter') }}', data, function(response) {
 
                     let len = response.length
                     let all_txt = ''
@@ -169,7 +160,7 @@
                         maxVal: maxVal
                     }
 
-                    $.post('{{ route('price.filter') }}', data, function(response) {
+                    $.post('{{ route('store.price_filter') }}', data, function(response) {
                         let all_txt = ''
                         $.each(response, function($key, $item) {
                             all_txt = all_txt + GetHtmlBlade($item)

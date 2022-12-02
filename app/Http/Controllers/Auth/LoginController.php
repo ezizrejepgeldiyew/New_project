@@ -52,7 +52,7 @@ class LoginController extends Controller
         // dd(array('phone_number' => "+993" . $input['phone_number']));
         if (auth()->attempt(array('phone_number' => "+993" . $input['phone_number']))) {
             if (auth()->user()->isAdmin == 1) {
-                return redirect()->route('adminindex');
+                return redirect()->route('admin.index');
             } else {
                 return redirect()->route('index');
             }

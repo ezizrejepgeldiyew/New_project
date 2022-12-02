@@ -1,8 +1,8 @@
 <?php
 
-namespace App\Repository;
+namespace App\Repository\Admin;
 
-use App\Contracts\MoneyCoursInterface;
+use App\Contracts\Admin\MoneyCoursInterface;
 use App\Http\Requests\MoneyCoursRequest;
 use App\Models\MoneyCours;
 
@@ -32,6 +32,23 @@ class MoneyCoursRepository implements MoneyCoursInterface
     public function destroy($id)
     {
         return MoneyCours::destroy($id);
+    }
+
+    public function update_money($id)
+    {
+        $money_cours = $this->find($id);
+        $money = session()->forget('money');
+        $money = session()->get('money', []);
+        if (empty($money[$id])) {
+            $money[$id] = [
+                "id" => $id,
+                "price" => $money_cours->price,
+                "name" => $money_cours->name,
+                "fullname" => $money_cours->fullname,
+            ];
+        }
+        session()->put('money', $money);
+        return response()->json($money, 200);
     }
 
     private function find($id)

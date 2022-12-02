@@ -6,7 +6,7 @@
             <h1>Ugradylmadyk harytlar</h1>
             <nav>
                 <ol class="breadcrumb">
-                    <li class="breadcrumb-item"><a href="{{ route('adminindex') }}">Home</a></li>
+                    <li class="breadcrumb-item"><a href="{{ route('admin.index') }}">Home</a></li>
                     <li class="breadcrumb-item">Zakazlar</li>
                     <li class="breadcrumb-item active">Ugradylmadyk</li>
                 </ol>
@@ -117,9 +117,13 @@
 
     <script>
         function ChangeStatus(id) {
-            link = window.location + "/changestatus/" + id
-            $.ajax(link, "get", function(response) {
-                console.log(response)
+            let data = {
+                _token: "{{ csrf_token() }}",
+                id: id
+            }
+            console.log(data);
+            $.get('{{ route('order.changestatus') }}', data, function(response){
+                
             });
         }
     </script>

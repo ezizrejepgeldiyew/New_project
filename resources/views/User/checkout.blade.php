@@ -38,7 +38,7 @@
 						<a href="@guest
                             {{ route('login') }}
                         @endguest @auth
-                            {{ route('orderm') }}
+                            {{ route('order.store') }}
                         @endauth" class="primary-btn order-submit">Place order</a>
 					</div>
 				</div>
