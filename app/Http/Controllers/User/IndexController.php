@@ -13,14 +13,14 @@ use App\Repository\User\ShowRepository;
 class IndexController extends Controller
 {
     public function index(
-        MoneyCoursRepository $money_cours,
+        MoneyCoursRepository $moneyCours,
         NoticesRepository $notices,
         CategoryRepository $category,
         ProductRepository $product
     ) {
         return view('User.index',
             [
-                'money_cours' => $money_cours->get(),
+                'money_cours' => $moneyCours->get(),
                 'notices' => $notices->get(),
                 'category' => $category->get(),
                 'product' => $product->random(),
@@ -32,28 +32,28 @@ class IndexController extends Controller
         CategoryRepository $category,
         OurBrandRepository $ourbrand,
         ProductRepository $product,
-        MoneyCoursRepository $money_cours
+        MoneyCoursRepository $moneyCours
     ) {
         return view('User.store',
             [
                 'category' => $category->get(),
                 'ourbrand' => $ourbrand->get(),
                 'product' => $product->get(),
-                'money_cours' => $money_cours->get()
+                'money_cours' => $moneyCours->get()
             ]
         );
     }
 
     public function show(
         $id,
-        MoneyCoursRepository $money_cours,
+        MoneyCoursRepository $moneyCours,
         CategoryRepository $category,
         ProductRepository $product,
         ShowRepository $show
     ) {
         return view('User.product',
             [
-                'money_cours' => $money_cours->get(),
+                'money_cours' => $moneyCours->get(),
                 'category' => $category->get(),
                 'products' => $product->get(),
                 'product' => $product->find($id),
@@ -65,23 +65,23 @@ class IndexController extends Controller
 
     public function checkout(
         CategoryRepository $category,
-        MoneyCoursRepository $money_cours
+        MoneyCoursRepository $moneyCours
     ) {
         return view('User.checkout',
             [
                 'category' => $category->get(),
-                'money_cours' => $money_cours->get(),
+                'money_cours' => $moneyCours->get(),
             ]
         );
     }
 
     public function cart(
-        MoneyCoursRepository $money_cours,
+        MoneyCoursRepository $moneyCours,
         CategoryRepository $category
     ) {
         return view('User.cart',
             [
-                'money_cours' => $money_cours->get(),
+                'money_cours' => $moneyCours->get(),
                 'category' => $category->get(),
             ]
         );

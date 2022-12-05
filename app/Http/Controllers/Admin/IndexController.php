@@ -20,7 +20,7 @@ class IndexController extends Controller
         ]);
     }
 
-    public function orders_true(
+    public function ordersTrue(
         OrderRepository $order
     ) {
         return view('Admin.order_true',
@@ -29,7 +29,7 @@ class IndexController extends Controller
         ]);
     }
 
-    public function orders_false(
+    public function ordersFalse(
         OrderRepository $order
     ) {
         return view('Admin.order_false',

@@ -13,6 +13,6 @@ class ProductDownloads extends Model
 
     public function Product()
     {
-        return $this->belongsTo(product::class);
+        return $this->belongsTo(Product::class);
     }
 }

@@ -4,9 +4,9 @@ namespace App\Repository\Admin;
 
 use App\Contracts\Admin\OrderInterface;
 use App\Models\Orders;
-use App\Models\product;
+use App\Models\Product;
 use App\Models\ProductStatus;
-use App\Repository\ProductDownloadsRepository;
+use App\Repository\Admin\ProductDownloadsRepository;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 
@@ -46,13 +46,13 @@ class OrderRepository implements OrderInterface
 
     public function true()
     {
-        $order = Orders::with('User', 'product')->whereStatus(1)->get();
+        $order = Orders::with('User', 'Product')->whereStatus(1)->get();
         return $this->GenerateData($order);
     }
 
     public function false()
     {
-        $order = Orders::with('User', 'product')->whereStatus(0)->get();
+        $order = Orders::with('User', 'Product')->whereStatus(0)->get();
         return $this->GenerateData($order);
     }
 
@@ -62,7 +62,7 @@ class OrderRepository implements OrderInterface
             $array = [];
             $ff = [];
             foreach (json_decode($query->product_id) as $key => $value) {
-                $array[] = product::find($key);
+                $array[] = Product::find($key);
                 $ff[] = $value;
             }
             return [
@@ -76,7 +76,7 @@ class OrderRepository implements OrderInterface
         });
     }
 
-    public function changestatus()
+    public function changeStatus()
     {
         $id = request('id');
         DB::select("UPDATE `orders` SET `status` = !(SELECT orders.status WHERE orders.id = $id ) WHERE `orders`.`id` = $id");

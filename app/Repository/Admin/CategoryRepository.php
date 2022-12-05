@@ -4,18 +4,18 @@ namespace App\Repository\Admin;
 
 use App\Contracts\Admin\CategoryInterface;
 use App\Http\Requests\CreateCategoryRequests;
-use App\Models\category;
+use App\Models\Category;
 
 class CategoryRepository implements CategoryInterface
 {
-    public function __construct(category $category)
+    public function __construct(Category $category)
     {
         $this->category = $category;
     }
 
     public function get()
     {
-        return category::get();
+        return Category::get();
     }
 
     public function create()
@@ -24,7 +24,7 @@ class CategoryRepository implements CategoryInterface
 
     public function store($data)
     {
-        return category::create($data->validated());
+        return Category::create($data->validated());
     }
 
     public function update(CreateCategoryRequests $request, $id)
@@ -36,11 +36,11 @@ class CategoryRepository implements CategoryInterface
 
     public function destroy($id)
     {
-        return category::destroy($id);
+        return Category::destroy($id);
     }
 
     public function find($id)
     {
-        return category::find($id);
+        return Category::find($id);
     }
 }

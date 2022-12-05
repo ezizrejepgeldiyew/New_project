@@ -8,23 +8,23 @@ use App\Repository\Admin\MoneyCoursRepository;
 
 class MoneyCoursController extends Controller
 {
-    public function index(MoneyCoursRepository $money_cours)
+    public function index(MoneyCoursRepository $moneyCours)
     {
-        return view('Admin.Money_Cours.index',['money_cours' => $money_cours->get()]);
+        return view('Admin.Money_Cours.index',['money_cours' => $moneyCours->get()]);
     }
 
-    public function store(MoneyCoursRequest $request, MoneyCoursRepository $money_cours)
+    public function store(MoneyCoursRequest $request, MoneyCoursRepository $moneyCours)
     {
-        return back()->with('success',$money_cours->store($request));
+        return back()->with('success',$moneyCours->store($request));
     }
 
-    public function update(MoneyCoursRequest $request, MoneyCoursRepository $money_cours)
+    public function update(MoneyCoursRequest $request, MoneyCoursRepository $moneyCours)
     {
-        return redirect()->route('money_cours.index')->with('success', $money_cours->update($request, request('id')));
+        return redirect()->route('money_cours.index')->with('success', $moneyCours->update($request, request('id')));
     }
 
-    public function destroy($id, MoneyCoursRepository $money_cours)
+    public function destroy($id, MoneyCoursRepository $moneyCours)
     {
-        return back()->with('success', $money_cours->destroy($id));
+        return back()->with('success', $moneyCours->destroy($id));
     }
 }

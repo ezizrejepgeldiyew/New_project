@@ -4,11 +4,10 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
-
 use Illuminate\Support\Facades\Session;
 
 
-class product extends Model
+class Product extends Model
 {
     use HasFactory;
 
@@ -16,12 +15,12 @@ class product extends Model
 
     public function category()
     {
-        return $this->belongsTo(category::class, 'category_id', 'id');
+        return $this->belongsTo(Category::class, 'category_id', 'id');
     }
 
     public function ourbrand()
     {
-        return $this->belongsTo(ourbrand::class, 'ourbrand_id', 'id');
+        return $this->belongsTo(OurBrand::class, 'ourbrand_id', 'id');
     }
 
     public function discount()
@@ -40,7 +39,6 @@ class product extends Model
         foreach (session('money') as $item) {
             return $value * $item['price'];
         }
-
         return $value;
     }
 }

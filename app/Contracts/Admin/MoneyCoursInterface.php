@@ -14,7 +14,7 @@ interface MoneyCoursInterface
 
     public function destroy($id);
 
-    public function update_money($id);
+    public function updateMoney($id);
 
 }
 

@@ -24,7 +24,7 @@ class NoticesRepository implements NoticesInterface
     public function store(NoticesRequest $request)
     {
         $data = $request->all();
-        $data['photo'] = PhotoSettings::StorePhoto($data['photo'], $this->PhotoFolder);
+        $data['photo'] = PhotoSettings::storePhoto($data['photo'], $this->PhotoFolder);
         return Notices::create($data);
     }
 
@@ -32,14 +32,14 @@ class NoticesRepository implements NoticesInterface
     {
         $notices = $this->find($id);
         $data = $request->all();
-        $data['photo'] = PhotoSettings::UpdatePhoto($data['photo'], $this->PhotoFolder, $notices['photo']);
+        $data['photo'] = PhotoSettings::updatePhoto($data['photo'], $this->PhotoFolder, $notices['photo']);
         return $notices->update($data);
     }
 
     public function destroy($id)
     {
         $notices = $this->find($id);
-        PhotoSettings::DestroyPhoto($notices['photo']);
+        PhotoSettings::destroyPhoto($notices['photo']);
         return $notices->delete();
     }
 

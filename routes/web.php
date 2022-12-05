@@ -51,9 +51,9 @@ Route::prefix('cartjquery/')->name('cartjquery.')->controller(CartJqueryReposito
 });
 
 Route::prefix('store/')->name('store.')->controller(StoreRepository::class)->group(function () {
-    Route::get('search-filter', 'search_filter')->name('search_filter');
-    Route::post('price-filter', 'price_filter')->name('price_filter');
-    Route::get('checkbox-filter', 'checkbox_filter')->name('checkbox_filter');
+    Route::get('search-filter', 'searchFilter')->name('search_filter');
+    Route::post('price-filter', 'priceFilter')->name('price_filter');
+    Route::get('checkbox-filter', 'checkboxFilter')->name('checkbox_filter');
 });
 
 Route::prefix('show/')->name('show.')->controller(ShowRepository::class)->group(function () {
@@ -62,7 +62,7 @@ Route::prefix('show/')->name('show.')->controller(ShowRepository::class)->group(
 
 Route::prefix('order/')->name('order.')->controller(OrderController::class)->group(function () {
     Route::get('store', 'store')->name('store');
-    Route::get('change-status', 'changestatus')->name('changestatus');
+    Route::get('change-status', 'changeStatus')->name('changestatus');
 });
 
 Auth::routes();
@@ -118,8 +118,8 @@ Route::prefix('admin/')->middleware(['admin'])->group(function () {
 
     Route::name('admin.')->controller(AdminIndexController::class)->group(function () {
         Route::get('index', 'index')->name('index');
-        Route::get('orders-true', 'orders_true')->name('orders_true');
-        Route::get('orders-false', 'orders_false')->name('orders_false');
+        Route::get('orders-true', 'ordersTrue')->name('orders_true');
+        Route::get('orders-false', 'ordersFalse')->name('orders_false');
     });
 
     Route::prefix('online-users')->name('online_users.')->controller(OnlineUsersController::class)->group(function(){

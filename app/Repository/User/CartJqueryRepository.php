@@ -3,7 +3,7 @@
 namespace App\Repository\User;
 
 use App\Contracts\User\CartJqueryInterface;
-use App\Models\product;
+use App\Models\Product;
 use Illuminate\Http\Request;
 
 class CartJqueryRepository implements CartJqueryInterface
@@ -16,7 +16,7 @@ class CartJqueryRepository implements CartJqueryInterface
         } else {
             $quantity = request('quantity');
         }
-        $product = product::findOrFail($id);
+        $product = Product::findOrFail($id);
         $cart = session()->get('cart', []);
         if (isset($cart[$id])) {
             $cart[$id]['quantity']++;

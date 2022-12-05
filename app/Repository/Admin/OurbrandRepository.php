@@ -4,47 +4,47 @@ namespace App\Repository\Admin;
 
 use App\Contracts\Admin\OurBrandInterface;
 use App\Http\Requests\CreateOurBrandRequests;
-use App\Models\ourbrand;
+use App\Models\Ourbrand;
 use App\Repository\PhotoSettings;
 
 class OurBrandRepository implements OurBrandInterface
 {
     protected $PhotoFolder = "OurBrand";
 
-    public function __construct(ourbrand $ourbrand)
+    public function __construct(Ourbrand $ourBrand)
     {
-        $this->ourbrand = $ourbrand;
+        $this->ourBrand = $ourBrand;
     }
     public function get()
     {
-        return ourbrand::get();
+        return Ourbrand::get();
     }
 
     public function store(CreateOurBrandRequests $request)
     {
         $data = $request -> all();
-        $data['photo'] = PhotoSettings::StorePhoto($data['photo'], $this->PhotoFolder);
-        return ourbrand::create($data);
+        $data['photo'] = PhotoSettings::storePhoto($data['photo'], $this->PhotoFolder);
+        return Ourbrand::create($data);
     }
 
     public function update(CreateOurBrandRequests $request, $id)
     {
-        $ourbrand = $this -> find($id);
+        $ourBrand = $this -> find($id);
         $data = $request -> all();
-        $data['photo'] = PhotoSettings::UpdatePhoto($data['photo'], $this->PhotoFolder, $ourbrand['photo']);
-        return $ourbrand->update($data);
+        $data['photo'] = PhotoSettings::updatePhoto($data['photo'], $this->PhotoFolder, $ourBrand['photo']);
+        return $ourBrand->update($data);
     }
 
     public function destroy($id)
     {
-        $ourbrand = $this -> find($id);
-        PhotoSettings::DestroyPhoto($ourbrand['photo']);
-        return $ourbrand->delete();
+        $ourBrand = $this -> find($id);
+        PhotoSettings::destroyPhoto($ourBrand['photo']);
+        return $ourBrand->delete();
     }
 
     public function find($id)
     {
-        return ourbrand::find($id);
+        return Ourbrand::find($id);
     }
 }
 

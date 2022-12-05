@@ -14,10 +14,10 @@ class OrderController extends Controller
         return back();
     }
 
-    public function changestatus(
+    public function changeStatus(
         OrderRepository $order
     ) {
-        $order->ChangeStatus();
+        $order->changeStatus();
         return response()->json(['message' => "ok"], 200);
     }
 }

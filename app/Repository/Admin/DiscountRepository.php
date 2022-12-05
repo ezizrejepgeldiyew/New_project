@@ -4,8 +4,7 @@ namespace App\Repository\Admin;
 
 use App\Contracts\Admin\DiscountInterface;
 use App\Models\Discount;
-use App\Models\product;
-use Illuminate\Support\Facades\DB;
+use App\Models\Product;
 
 class DiscountRepository implements DiscountInterface
 {
@@ -31,7 +30,7 @@ class DiscountRepository implements DiscountInterface
         foreach ($favorite as $key => $value) {
             $data['product_id'] = $value;
             $add = Discount::create($data);
-            product::where('id', $value)->update([
+            Product::where('id', $value)->update([
                 'discount' => $data['discount_price'],
             ]);
         }
@@ -40,6 +39,6 @@ class DiscountRepository implements DiscountInterface
 
     public function product()
     {
-        return DB::table('products')->where('discount', '=', null)->select('id', 'photo', 'name', 'price')->get();
+        return Product::whereNotNull('discount')->select('id', 'photo', 'name', 'price')->get();
     }
 }

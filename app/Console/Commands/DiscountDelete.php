@@ -3,7 +3,7 @@
 namespace App\Console\Commands;
 
 use App\Models\Discount;
-use App\Models\product;
+use App\Models\Product;
 use DateTimeZone;
 use Illuminate\Console\Command;
 
@@ -45,7 +45,7 @@ class DiscountDelete extends Command
         $datetime = $datetime->format('Y-m-d H:i:s');
 
         $discount = Discount::where('date','<=',$datetime)->pluck('product_id');
-        product::where('id',$discount)->update([
+        Product::where('id',$discount)->update([
             'discount' => null,
         ]);
         $a = (bool)Discount::where('date','<=',$datetime)->delete();

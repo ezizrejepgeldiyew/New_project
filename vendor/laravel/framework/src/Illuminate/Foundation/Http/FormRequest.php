@@ -110,8 +110,10 @@ class FormRequest extends Request implements ValidatesWhenResolved
     protected function createDefaultValidator(ValidationFactory $factory)
     {
         return $factory->make(
-            $this->validationData(), $this->container->call([$this, 'rules']),
-            $this->messages(), $this->attributes()
+            $this->validationData(),
+            $this->container->call([$this, 'rules']),
+            $this->messages(),
+            $this->attributes()
         )->stopOnFirstFailure($this->stopOnFirstFailure);
     }
 
@@ -136,8 +138,8 @@ class FormRequest extends Request implements ValidatesWhenResolved
     protected function failedValidation(Validator $validator)
     {
         throw (new ValidationException($validator))
-                    ->errorBag($this->errorBag)
-                    ->redirectTo($this->getRedirectUrl());
+            ->errorBag($this->errorBag)
+            ->redirectTo($this->getRedirectUrl());
     }
 
     /**
@@ -199,8 +201,8 @@ class FormRequest extends Request implements ValidatesWhenResolved
     public function safe(array $keys = null)
     {
         return is_array($keys)
-                    ? $this->validator->safe()->only($keys)
-                    : $this->validator->safe();
+            ? $this->validator->safe()->only($keys)
+            : $this->validator->safe();
     }
 
     /**

@@ -23,7 +23,7 @@
             <h1>Bildrişler</h1>
             <nav>
                 <ol class="breadcrumb">
-                    <li class="breadcrumb-item"><a href="{{ route('adminindex') }}">Baş sahypa</a></li>
+                    <li class="breadcrumb-item"><a href="{{ route('admin.index') }}">Baş sahypa</a></li>
                     <li class="breadcrumb-item active">Bildirişler</li>
                 </ol>
             </nav>

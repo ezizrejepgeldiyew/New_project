@@ -7,8 +7,8 @@ use App\Repository\Admin\ProductDownloadsRepository;
 
 class ProductDownloadsController extends Controller
 {
-    public function index(ProductDownloadsRepository $pro_downloads)
+    public function index(ProductDownloadsRepository $proDownloads)
     {
-        return view('Admin.Product_Downloads.index',['pro_downloads' => $pro_downloads->get()]);
+        return view('Admin.Product_Downloads.index',['pro_downloads' => $proDownloads->get()]);
     }
 }

@@ -3,38 +3,38 @@
 namespace App\Repository\User;
 
 use App\Contracts\User\StoreInterface;
-use App\Models\product;
+use App\Models\Product;
 
 class StoreRepository implements StoreInterface
 {
-    public function search_filter()
+    public function searchFilter()
     {
         $text = request('text');
-        $search = product::whereHas('ourbrand', function ($query) use ($text) {
+        $search = Product::whereHas('ourbrand', function ($query) use ($text) {
             $query->where('name', 'Like', "%$text%");
         })->orWhere('name', 'Like', "%$text%")->with('category')->get();
         return response()->json($search, 200);
     }
 
-    public function price_filter()
+    public function priceFilter()
     {
         $minVal = (int)request('minVal');
         $maxVal = (int)request('maxVal');
-        $data = product::where('price', '>=', $minVal)->where('price', '<=', $maxVal)->with('category')->get();
+        $data = Product::where('price', '>=', $minVal)->where('price', '<=', $maxVal)->with('category')->get();
         return response()->json($data, 200);
     }
 
-    public function checkbox_filter()
+    public function checkboxFilter()
     {
         $id = request('id');
         $cart1 = [];
         if ($id == null) {
-            $cart = product::with('category')->get();
+            $cart = Product::with('category')->get();
             array_push($cart1, $cart);
         } else {
             foreach ($id as $key => $value) {
 
-                $cart = product::where('category_id', $value)->with('category')->get();
+                $cart = Product::where('category_id', $value)->with('category')->get();
                 array_push($cart1, $cart);
             }
         }

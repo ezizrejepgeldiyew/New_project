@@ -8,11 +8,11 @@ use App\Repository\Admin\OnlineUsersRepository;
 class OnlineUsersController extends Controller
 {
     public function index(
-        OnlineUsersRepository $online_users
+        OnlineUsersRepository $onlineUsers
     ) {
         return view('Admin.online_users',
         [
-            'online_users' => $online_users->get(),
+            'online_users' => $onlineUsers->get(),
         ]);
     }
 }

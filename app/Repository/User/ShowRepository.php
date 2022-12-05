@@ -3,8 +3,8 @@
 namespace App\Repository\User;
 
 use App\Contracts\User\ShowInterface;
-use App\Models\product;
-use App\Models\review;
+use App\Models\Product;
+use App\Models\Review;
 use Illuminate\Http\Request;
 
 class ShowRepository implements ShowInterface
@@ -13,9 +13,9 @@ class ShowRepository implements ShowInterface
     {
         $data = $request->all();
         $data['product_id'] = $id;
-        review::create($data);
-        $rating = review::where('product_id', $id)->pluck('rating')->avg();
-        $data = product::where('id', $id)->first();
+        Review::create($data);
+        $rating = Review::where('product_id', $id)->pluck('rating')->avg();
+        $data = Product::where('id', $id)->first();
         $data->rating = $rating;
         $data->save();
         return back();
@@ -23,12 +23,12 @@ class ShowRepository implements ShowInterface
 
     public function rating($id)
     {
-        return review::where('product_id', $id)->pluck('rating');
+        return Review::where('product_id', $id)->pluck('rating');
     }
 
     public function paginate()
     {
-        return review::paginate(3);
+        return Review::paginate(3);
     }
 
     public function count($id)

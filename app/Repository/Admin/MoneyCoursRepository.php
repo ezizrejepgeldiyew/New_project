@@ -8,9 +8,9 @@ use App\Models\MoneyCours;
 
 class MoneyCoursRepository implements MoneyCoursInterface
 {
-    public function __construct(MoneyCours $money_cours)
+    public function __construct(MoneyCours $moneyCours)
     {
-        $this->money_cours = $money_cours;
+        $this->moneyCours = $moneyCours;
     }
 
     public function get()
@@ -25,8 +25,8 @@ class MoneyCoursRepository implements MoneyCoursInterface
 
     public function update(MoneyCoursRequest $request, $id)
     {
-        $money_cours = $this->find($id);
-        return $money_cours->update($request->all());
+        $moneyCours = $this->find($id);
+        return $moneyCours->update($request->all());
     }
 
     public function destroy($id)
@@ -34,17 +34,17 @@ class MoneyCoursRepository implements MoneyCoursInterface
         return MoneyCours::destroy($id);
     }
 
-    public function update_money($id)
+    public function updateMoney($id)
     {
-        $money_cours = $this->find($id);
+        $moneyCours = $this->find($id);
         $money = session()->forget('money');
         $money = session()->get('money', []);
         if (empty($money[$id])) {
             $money[$id] = [
                 "id" => $id,
-                "price" => $money_cours->price,
-                "name" => $money_cours->name,
-                "fullname" => $money_cours->fullname,
+                "price" => $moneyCours->price,
+                "name" => $moneyCours->name,
+                "fullname" => $moneyCours->fullname,
             ];
         }
         session()->put('money', $money);

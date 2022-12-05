@@ -4,10 +4,10 @@ namespace App\Contracts\User;
 
 interface StoreInterface
 {
-    public function search_filter();
+    public function searchFilter();
 
-    public function price_filter();
+    public function priceFilter();
 
-    public function checkbox_filter();
+    public function checkboxFilter();
 }
 

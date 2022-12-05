@@ -7,29 +7,29 @@ use Illuminate\Support\Facades\Storage;
 class PhotoSettings
 {
 
-    public static function StorePhoto($photo, $title)
+    public static function storePhoto($photo, $title)
     {
         $date = date('Y-m-d');
         return $photo->store("{$title}/{$date}");
     }
 
-    public function DeletePhoto($photo)
+    public function deletePhoto($photo)
     {
         return Storage::delete($photo);
     }
 
-    public static function UpdatePhoto($photo, $title, $previous_photo)
+    public static function updatePhoto($photo, $title, $previousPhoto)
     {
-        Storage::delete($previous_photo);
-        return static::StorePhoto($photo, $title);
+        Storage::delete($previousPhoto);
+        return static::storePhoto($photo, $title);
     }
 
-    public static function DestroyPhoto($previous_photo)
+    public static function destroyPhoto($previousPhoto)
     {
-        Storage::delete($previous_photo);
+        Storage::delete($previousPhoto);
     }
 
-    public static function StorePhotos($photos, $titles)
+    public static function storePhotos($photos, $titles)
     {
         $date = date('Y-m-d');
         foreach ($photos as $item) {
@@ -38,14 +38,14 @@ class PhotoSettings
         return json_encode($images);
     }
 
-    public static function UpdatePhotos($photos, $titles, $previous_photos)
+    public static function updatePhotos($photos, $titles, $previousPhotos)
     {
-        Storage::delete($previous_photos);
-        return static::StorePhotos($photos, $titles);
+        Storage::delete($previousPhotos);
+        return static::storePhotos($photos, $titles);
     }
 
-    public static function DestroyPhotos($previous_photos)
+    public static function destroyPhotos($previousPhotos)
     {
-        Storage::delete($previous_photos);
+        Storage::delete($previousPhotos);
     }
 }

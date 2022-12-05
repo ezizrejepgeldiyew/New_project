@@ -2,12 +2,10 @@
 
 namespace App\Models;
 
-use Illuminate\Http\Request;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
-use Illuminate\Support\Facades\Storage;
 
-class ourbrand extends Model
+class Ourbrand extends Model
 {
     use HasFactory;
 
@@ -15,7 +13,7 @@ class ourbrand extends Model
 
     public function product()
     {
-        return $this->hasMany(product::class);
+        return $this->hasMany(Product::class);
     }
 
 }

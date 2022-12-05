@@ -14,6 +14,6 @@ interface OrderInterface
 
     public function false();
 
-    public function changestatus();
+    public function changeStatus();
 }
 

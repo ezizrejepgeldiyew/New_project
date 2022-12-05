@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\API;
+use App\Http\Controllers\API\OurBrandController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -14,4 +15,13 @@ use Illuminate\Support\Facades\Route;
 | is assigned the "api" middleware group. Enjoy building your API!
 |
 */
-Route::post('/add',[API::class,'store']);
+Route::middleware('auth:api')->group(function(){
+    Route::controller(OurBrandController::class)->group(function () {
+        Route::get('index', 'index');
+        Route::post('store', 'store');
+        Route::get('show/{id}', 'show');
+        Route::post('update/{id}', 'update');
+        Route::get('delete/{id}', 'delete');
+    });
+});
+

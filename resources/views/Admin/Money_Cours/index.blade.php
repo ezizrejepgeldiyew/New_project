@@ -6,7 +6,7 @@
             <h1>Kurslar</h1>
             <nav>
                 <ol class="breadcrumb">
-                    <li class="breadcrumb-item"><a href="{{ route('adminindex') }}">Home</a></li>
+                    <li class="breadcrumb-item"><a href="{{ route('admin.index') }}">Home</a></li>
                     <li class="breadcrumb-item active">Kurslar</li>
                 </ol>
             </nav>
