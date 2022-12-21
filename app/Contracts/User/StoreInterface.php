@@ -9,5 +9,7 @@ interface StoreInterface
     public function priceFilter();
 
     public function checkboxFilter();
+
+    public function showCookie();
 }
 

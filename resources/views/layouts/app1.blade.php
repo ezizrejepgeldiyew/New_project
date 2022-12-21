@@ -167,6 +167,15 @@
             </li>
 
             <li class="nav-item">
+                <a href="{{ route('aboutUs.index') }}"
+                    class="@if (Request::routeIs('aboutUs.index')) nav-link @else
+                nav-link collapsed @endif">
+                    <i class="bi bi-box"></i>
+                    <span>Biz barada</span>
+                </a>
+            </li>
+
+            <li class="nav-item">
                 <a href="" class="nav-link collapsed"
                     onclick="event.preventDefault(); document.getElementById('logout-form').submit();"><i
                         class="bi bi-box-arrow-in-right"></i>Logout</a>

@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Admin\AboutUsController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\User\IndexController;
 use App\Http\Controllers\Admin\CategoryController;
@@ -42,7 +43,7 @@ Route::controller(IndexController::class)->group(function () {
 });
 
 
-Route::get('update_money/{id?}', [MoneyCoursRepository::class, 'update_money'])->name('update_money');
+Route::get('update_money/{id?}', [MoneyCoursRepository::class, 'updateMoney'])->name('update_money');
 
 Route::prefix('cartjquery/')->name('cartjquery.')->controller(CartJqueryRepository::class)->group(function(){
     Route::get('store', 'store') ->name('store');
@@ -54,6 +55,8 @@ Route::prefix('store/')->name('store.')->controller(StoreRepository::class)->gro
     Route::get('search-filter', 'searchFilter')->name('search_filter');
     Route::post('price-filter', 'priceFilter')->name('price_filter');
     Route::get('checkbox-filter', 'checkboxFilter')->name('checkbox_filter');
+    Route::get('show/{changeShow?}', 'showCookie')->name('show');
+    Route::post('sort', 'sortCookie')->name('sort');
 });
 
 Route::prefix('show/')->name('show.')->controller(ShowRepository::class)->group(function () {
@@ -114,6 +117,13 @@ Route::prefix('admin/')->middleware(['admin'])->group(function () {
 
     Route::prefix('product-downloads/')->name('product_downloads.')->controller(ProductDownloadsController::class)->group(function () {
         Route::get('index', 'index')->name('index');
+    });
+
+    Route::prefix('aboutUs/')->name('aboutUs.')->controller(AboutUsController::class)->group(function () {
+        Route::get('index', 'index')->name('index');
+        Route::post('store', 'store')->name('store');
+        Route::put('update/{id}', 'update')->name('update');
+        Route::delete('destroy/{id}', 'destroy')->name('destroy');
     });
 
     Route::name('admin.')->controller(AdminIndexController::class)->group(function () {

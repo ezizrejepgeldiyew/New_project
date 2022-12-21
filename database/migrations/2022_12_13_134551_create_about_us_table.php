@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class AddNewColumnLastSeen extends Migration
+class CreateAboutUsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,9 +13,13 @@ class AddNewColumnLastSeen extends Migration
      */
     public function up()
     {
-        Schema::table('users', function(Blueprint $table)
-        {
-            $table->timestamp('last_seen')->nullable();
+        Schema::create('about_us', function (Blueprint $table) {
+            $table->id();
+            $table->string('email');
+            $table->string('phone');
+            $table->string('map');
+            $table->string('description');
+            $table->timestamps();
         });
     }
 
@@ -26,6 +30,6 @@ class AddNewColumnLastSeen extends Migration
      */
     public function down()
     {
-        //
+        Schema::dropIfExists('about_us');
     }
 }

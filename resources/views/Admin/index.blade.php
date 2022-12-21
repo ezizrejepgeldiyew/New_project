@@ -95,13 +95,16 @@
         </section>
     </main>
 
-
     <script>
+        var a = <?php echo $a; ?>
+
         document.addEventListener("DOMContentLoaded", () => {
             new ApexCharts(document.querySelector("#lineChart"), {
+
+
                 series: [{
                     name: "Desktops",
-                    data: [10, 41, 35, 51, 49, 62, 69, 91, 148]
+                    data: a
                 }],
                 chart: {
                     height: 350,

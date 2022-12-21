@@ -6,39 +6,53 @@
                 <table id="cart" class="table table-hover table-condensed">
                     <thead>
                         <tr>
-                            <th style="width:50%">Product</th>
-                            <th style="width:10%">Price</th>
-                            <th style="width:8%">Quantity</th>
-                            <th style="width:22%" class="text-center">Subtotal</th>
-                            <th style="width:10%"></th>
+                            <th style="width:40%">Suraty</th>
+                            <th style="width:10%">Ady</th>
+                            <th style="width:10%">Bahasy</th>
+                            <th style="width:8%">Sany</th>
+                            <th style="width:22%" class="text-center">Jemi bahasy</th>
+                            <th style="width:10%">Pozmak</th>
                         </tr>
                     </thead>
                     <tbody>
-                        @php $total = 0 @endphp
+                        @php $total = 0; $name = "";
+                            if (session('money'))
+                            {
+                                foreach (session('money') as $item)
+                                {
+                                    $name = $item['name'];
+                                    $price = $item['price'];
+                                }
+                            }
+                            else {
+                                $name = "TMT";
+                                $price = 1;
+                            }
+
+                         @endphp
                         @if (session('cart'))
                             @foreach (session('cart') as $id => $details)
                                 @php $total += $details['price'] * $details['quantity'] @endphp
                                 <tr data-id="{{ $id }}" id="card{{ $id }}">
-                                    <td data-th="Product">
+                                    <td data-th="Suraty">
                                         <div class="row">
-                                            <div class="col-sm-3 hidden-xs"><a
-                                                    href="{{ route('show', $id) }}"><img
+                                            <div class="col-sm-3 hidden-xs"><a href="{{ route('show', $id) }}"><img
                                                         src="{{ asset('images/' . $details['image']) }}" width="100"
                                                         height="100" class="img-responsive" /></a></div>
-                                            <div class="col-sm-9">
-                                                <h4 class="nomargin">{{ $details['name'] }}</h4>
-                                            </div>
                                         </div>
                                     </td>
-                                    <td data-th="Price">${{ $details['price'] }}</td>
-                                    <td data-th="Quantity">
+                                    <td data-th="Ady">
+                                        <h4 class="nomargin">{{ $details['name'] }}</h4>
+                                    </td>
+                                    <td data-th="Bahasy">{{ $details['price'] / $price }} {{ $name }}</td>
+                                    <td data-th="Sany">
                                         <input type="number" value="{{ $details['quantity'] }}"
                                             class="form-control quantity update-cart" />
                                     </td>
-                                    <td data-th="Subtotal" class="text-center">
+                                    <td data-th="Jemi bahasy" class="text-center">
                                         <span
-                                            class="prod{{ $id }} product">{{ $details['price'] * $details['quantity'] }}
-                                        </span>TMT
+                                            class="prod{{ $id }} product">{{ ($details['price'] * $details['quantity'])/ $price }}
+                                        </span>{{ $name }}
                                     </td>
                                     <td class="actions" data-th="">
                                         <button class="btn btn-danger btn-sm remove-from-cart"><i
@@ -51,15 +65,13 @@
                     <tfoot>
                         <tr>
                             <td colspan="5" class="text-right">
-                                <h3><strong>Total $<span class="pro_total">{{ $total }}</span></strong></h3>
+                                <h3><strong>Jemi <span class="pro_total">{{ $total / $price }} {{ $name }}</span></strong></h3>
                             </td>
                         </tr>
                         <tr>
                             <td colspan="5" class="text-right">
-                                <a href="{{ url('/') }}" class="btn btn-warning"><i class="fa fa-angle-left"></i>
-                                    Continue Shopping</a>
-                                <a href="{{ route('checkout') }}" class="btn btn-success"><i class="fa fa-angle-left"></i>
-                                    Checkout</a>
+                                <a href="{{ route('checkout') }}" class="btn btn-success">
+                                    Satyn almak</a>
                             </td>
                         </tr>
                     </tfoot>

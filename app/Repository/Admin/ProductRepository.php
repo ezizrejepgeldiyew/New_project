@@ -67,7 +67,7 @@ class ProductRepository implements ProductInterface
 
     public function random()
     {
-        return Product::inRandomOrder()->get();
+        return Product::orderBy('updated_at', 'DESC')->inRandomOrder()->get()->take(10);
     }
 
 }

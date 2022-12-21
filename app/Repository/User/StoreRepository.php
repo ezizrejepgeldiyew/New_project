@@ -4,6 +4,7 @@ namespace App\Repository\User;
 
 use App\Contracts\User\StoreInterface;
 use App\Models\Product;
+use Illuminate\Support\Facades\Cookie;
 
 class StoreRepository implements StoreInterface
 {
@@ -40,5 +41,44 @@ class StoreRepository implements StoreInterface
         }
         return response()->json($cart1, 200);
     }
-}
 
+    public function showCookie()
+    {
+        $changeShow = (int)request('changeShow');
+
+        if ($changeShow > 0 && !empty($this->getCookie('changeShow'))) {
+            Cookie::queue('changeShow', $changeShow);
+        }
+        if ($changeShow == 0 && empty($this->getCookie('changeShow'))) {
+            Cookie::queue('changeShow', 5);
+        }
+        $sortBy = Cookie::get('sortBy');
+        if ($sortBy == 0) {
+            return Product::paginate($this->getCookie('changeShow'));
+        } elseif ($sortBy == 1) {
+            $orderBy = 'asc';
+        }  else {
+            $orderBy = 'desc';
+        }
+        return Product::orderBy('price', $orderBy)->paginate($this->getCookie('changeShow'));
+    }
+
+    public function sortCookie()
+    {
+        $sortName = request('sortName');
+        $sortBy = (int)request('sortBy');
+        if (!empty($sortName) && !empty($this->getCookie('sortName'))) {
+            Cookie::queue('sortName', $sortName);
+            Cookie::queue('sortBy', $sortBy);
+        }
+        if (empty($sortName) && empty($this->getCookie('sortName'))) {
+            Cookie::queue('sortName', 'Saýlanmadyk');
+            Cookie::queue('sortBy', 0);
+        }
+    }
+
+    public function getCookie($title)
+    {
+        return Cookie::get($title);
+    }
+}

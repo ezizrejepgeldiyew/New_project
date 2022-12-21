@@ -14,13 +14,12 @@
         <p class="product-category">{{ $item->category->name }}</p>
         <h3 class="product-name"><a href="#">{{ $item->name }}</a></h3>
         @isset($item->discount)
-            <h4 class="product-price">{{ ($item->price / 100) * 30 }}TMT <del
+            <h4 class="product-price">{{ ($item->price / 100) * 30 }}<del
                     class="product-old-price">{{ $item->price }}TMT</del>
             </h4>
         @else
-            <h4 class="product-price">{{ $item->price }}TMT</h4>
+            <h4 class="product-price">{{ $item->price }}</h4>
         @endisset
-
 
         <div class="product-rating">
             @for ($i = 0; $i < $item->rating; $i++)
@@ -31,7 +30,6 @@
             @endfor
         </div>
         <div class="product-btns">
-            {{-- @if (in_array($item->id, session('wish') )) fa-heart-o @else fa-heart @endif --}}
             <button class="fa fa-heart-o"
                 onclick="myWishFunction({{ $item->id }})" type="submit" id="fav{{ $item->id }}"></i>
                 <span class="tooltipp">add to
@@ -78,6 +76,6 @@
             });
         }
 
-       
+
     </script>
 @endsection

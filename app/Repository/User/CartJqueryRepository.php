@@ -65,7 +65,6 @@ class CartJqueryRepository implements CartJqueryInterface
     {
         $cart = session()->get('cart');
         if ($request->id) {
-            $cart = session()->get('cart');
             if (isset($cart[$request->id])) {
                 unset($cart[$request->id]);
                 session()->put('cart', $cart);

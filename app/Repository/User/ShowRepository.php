@@ -13,10 +13,11 @@ class ShowRepository implements ShowInterface
     {
         $data = $request->all();
         $data['product_id'] = $id;
+
         Review::create($data);
         $rating = Review::where('product_id', $id)->pluck('rating')->avg();
         $data = Product::where('id', $id)->first();
-        $data->rating = $rating;
+        $data->rating = round($rating);
         $data->save();
         return back();
     }
@@ -35,5 +36,16 @@ class ShowRepository implements ShowInterface
     {
         return $this->rating($id)->countBy();
     }
-}
 
+    public function cartJquery($id)
+    {
+        $cart = session()->get('cart');
+        if (!empty($cart)) {
+            foreach ($cart as $key => $value) {
+                if ($value['id'] == $id) {
+                    return $cart[$id];
+                }
+            }
+        }
+    }
+}

@@ -38,15 +38,12 @@ class MoneyCoursRepository implements MoneyCoursInterface
     {
         $moneyCours = $this->find($id);
         $money = session()->forget('money');
-        $money = session()->get('money', []);
-        if (empty($money[$id])) {
-            $money[$id] = [
-                "id" => $id,
-                "price" => $moneyCours->price,
-                "name" => $moneyCours->name,
-                "fullname" => $moneyCours->fullname,
-            ];
-        }
+        $money[$id] = [
+            "id" => $id,
+            "price" => $moneyCours->price,
+            "name" => $moneyCours->name,
+            "fullname" => $moneyCours->fullname,
+        ];
         session()->put('money', $money);
         return response()->json($money, 200);
     }
@@ -55,7 +52,4 @@ class MoneyCoursRepository implements MoneyCoursInterface
     {
         return MoneyCours::find($id);
     }
-
 }
-
-

@@ -9,8 +9,8 @@
                             <img src="{{ asset('img1/shop01.png') }}" alt="">
                         </div>
                         <div class="shop-body">
-                            <h3>Laptop<br>Collection</h3>
-                            <a href="#" class="cta-btn">Shop now <i class="fa fa-arrow-circle-right"></i></a>
+                            <h3>Noutbuk <br> ýygyndysy</h3>
+                            <a href="#" class="cta-btn">Häzir dükan <i class="fa fa-arrow-circle-right"></i></a>
                         </div>
                     </div>
                 </div>
@@ -21,20 +21,20 @@
                             <img src="{{ asset('img1/shop03.png') }}" alt="">
                         </div>
                         <div class="shop-body">
-                            <h3>Accessories<br>Collection</h3>
-                            <a href="#" class="cta-btn">Shop now <i class="fa fa-arrow-circle-right"></i></a>
+                            <h3>Aksesuarlar<br>ýygyndysy</h3>
+                            <a href="#" class="cta-btn">Häzir dükan <i class="fa fa-arrow-circle-right"></i></a>
                         </div>
                     </div>
                 </div>
 
                 <div class="col-md-4 col-xs-6">
-                    <div class="shop">
+                    <div class="shop" style="height: 240px">
                         <div class="shop-img">
                             <img src="{{ asset('img1/shop02.png') }}" alt="">
                         </div>
                         <div class="shop-body">
-                            <h3>Cameras<br>Collection</h3>
-                            <a href="#" class="cta-btn">Shop now <i class="fa fa-arrow-circle-right"></i></a>
+                            <h3>Kamera<br>ýygyndysy</h3>
+                            <a href="#" class="cta-btn">Häzir dükan <i class="fa fa-arrow-circle-right"></i></a>
                         </div>
                     </div>
                 </div>
@@ -42,14 +42,12 @@
         </div>
     </div>
 
-    <!-- SECTION -->
     <div class="section">
         <div class="container">
             <div class="row">
-                <!-- section title -->
                 <div class="col-md-12">
                     <div class="section-title">
-                        <h3 class="title">New Products</h3>
+                        <h3 class="title">Täze harytlar</h3>
                         <div class="section-nav">
                             <ul class="section-tab-nav tab-nav">
                                 @foreach ($category as $key => $item)
@@ -61,38 +59,31 @@
                         </div>
                     </div>
                 </div>
-                <!-- /section title -->
 
-                <!-- Products tab & slick -->
                 <div class="col-md-12">
                     <div class="row">
                         <div class="products-tabs">
-                            <!-- tab -->
                             @foreach ($category as $key => $value)
                                 <div id="tab{{ $key }}" class="tab-pane @if ($key==0) active @endif">
-                                    <div class="products-slick" data-nav="#slick-nav-1">
+                                    <div class="products-slick" data-nav="#slick-nav-{{ $key }}">
                                         @foreach ($product as $item)
-
-                                            @if((date('d',(strtotime(now())-strtotime($item->created_at))) <=7) && ($item->
-                                                category_id == $value->id))
-
+                                            @if((date('d',(strtotime(now())-strtotime($item->created_at))) <=7) && ($item->category_id == $value->id))
                                                 @include('layouts.product')
-
-                                        @endif
-
+                                            @endif
+                                        @endforeach
+                                    </div>
+                                    <div id="slick-nav-{{ $key }}" class="products-slick-nav"></div>
+                                </div>
                             @endforeach
                         </div>
-                        <div id="slick-nav-1" class="products-slick-nav"></div>
                     </div>
-                    @endforeach
-
                 </div>
             </div>
         </div>
     </div>
 
     @foreach ($notices as $item)
-    <div id="hot-deal" class="section" background-image="{{ asset('images/'. $item->photo) }}">
+    <div id="hot-deal" class="section" background-image= {{ asset('../img1/hotdeal.png') }}>
         <div class="container">
             <div class="row">
                 <div class="col-md-12">
@@ -101,31 +92,31 @@
                             <li>
                                 <div>
                                     <h3>02</h3>
-                                    <span>Days</span>
+                                    <span>Gün</span>
                                 </div>
                             </li>
                             <li>
                                 <div>
                                     <h3>10</h3>
-                                    <span>Hours</span>
+                                    <span>Sagat</span>
                                 </div>
                             </li>
                             <li>
                                 <div>
                                     <h3>34</h3>
-                                    <span>Mins</span>
+                                    <span>Minut</span>
                                 </div>
                             </li>
                             <li>
                                 <div>
                                     <h3>60</h3>
-                                    <span>Secs</span>
+                                    <span>Sekunt</span>
                                 </div>
                             </li>
                         </ul>
-                        <h2 class="text-uppercase">hot deal this week</h2>
-                        <p>New Collection Up to 50% OFF</p>
-                        <a class="primary-btn cta-btn" href="#">Shop now</a>
+                        <h2 class="text-uppercase">Bu hepde gyzgyn şertnama</h2>
+                        <p>50% -e çenli täze kolleksiýa</p>
+                        <a class="primary-btn cta-btn" href="#">Häzir dükan</a>
                     </div>
                 </div>
             </div>
@@ -133,19 +124,17 @@
     </div>
     @endforeach
 
-
     <div class="section">
         <div class="container">
             <div class="row">
-
                 <div class="col-md-12">
                     <div class="section-title">
-                        <h3 class="title">Top selling</h3>
+                        <h3 class="title">Iň köp satylanlar</h3>
                         <div class="section-nav">
                             <ul class="section-tab-nav tab-nav">
                                 @foreach ($category as $key => $item)
                                     <li class="@if ($key==0) active @endif">
-                                        <a data-toggle="tab" href="#tab1{{ $key }}">{{ $item->name }}</a>
+                                        <a data-toggle="tab" href="#taba{{ $key }}">{{ $item->name }}</a>
                                     </li>
                                 @endforeach
                             </ul>
@@ -157,15 +146,15 @@
                     <div class="row">
                         <div class="products-tabs">
                             @foreach ($category as $key => $value)
-                                <div id="tab1{{ $key }}" class="tab-pane fade in @if ($key==0) active @endif">
-                                    <div class="products-slick" data-nav="#slick-nav-2">
+                                <div id="taba{{ $key }}" class="tab-pane fade in @if ($key==0) active @endif">
+                                    <div class="products-slick" data-nav="#slick-nav-a{{ $key }}">
                                         @foreach ($product as $item)
                                             @if ($item->category_id == $value->id)
                                                 @include('layouts.product')
                                             @endif
                                         @endforeach
                                     </div>
-                                    <div id="slick-nav-2" class="products-slick-nav"></div>
+                                    <div id="slick-nav-a{{ $key }}" class="products-slick-nav"></div>
                                 </div>
                             @endforeach
                         </div>

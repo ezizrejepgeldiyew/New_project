@@ -13,5 +13,7 @@ interface ShowInterface
     public function paginate();
 
     public function count($id);
+
+    public function cartJquery($id);
 }
 

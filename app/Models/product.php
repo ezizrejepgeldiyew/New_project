@@ -37,7 +37,9 @@ class Product extends Model
     {
         if(Session::has('money'))
         foreach (session('money') as $item) {
-            return $value * $item['price'];
+            $price = $value / $item['price'];
+            $name = $item['name'];
+            return "{$price} {$name}";
         }
         return $value;
     }

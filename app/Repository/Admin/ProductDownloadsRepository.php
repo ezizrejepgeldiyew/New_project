@@ -13,6 +13,11 @@ class ProductDownloadsRepository implements ProductDownloadsInterface
         return ProductDownloads::with('product')->get();
     }
 
+    public function take()
+    {
+        return ProductDownloads::with('product')->orderBy('download','desc')->get()->take(1);
+    }
+
     public static function store($request)
     {
         foreach ($request as $key => $value) {

@@ -36,6 +36,16 @@
                     foreach ($count as $item) {
                         $all = $all + $item;
                     }
+                    $name = '';
+                    if (session('money')) {
+                        foreach (session('money') as $item) {
+                            $name = $item['name'];
+                            $price = $item['price'];
+                        }
+                    } else {
+                        $name = 'TMT';
+                        $price = 1;
+                    }
                 @endphp
                 <div class="col-md-5">
                     <div class="product-details" data-id="{{ $product->id }}">
@@ -49,30 +59,35 @@
                                     <i class="fa fa-star-o"></i>
                                 @endfor
                             </div>
-                            <a class="review-link" href="#">{{ $all }} Review(s)</a>
+                            <a class="review-link" href="#">{{ $all }} Derejesi</a>
                         </div>
                         <div>
                             <h3 class="product-price"><span class="pro_price"
-                                    value="{{ $product->price }}">{{ $product->price }}</span> TMT</h3>
+                                    value="{{ $product->price }}">{{ $product->price }}</span></h3>
                         </div>
                         <p>{{ $product->description }}</p>
 
                         <div class="product-options">
                             <label class="pro_qty">
-                                Qty
-                                <input type="number" value="{{ $cart }}"
+                                Sany
+                                <input type="number"
+                                    @if (empty($cart['quantity'])) value="0" @else value="{{ $cart['quantity'] }}" @endif
                                     class="form-control quantity update-cart" />
                             </label>
                         </div>
 
                         <div class="add-to-cart">
 
-                            <button class="add-to-cart-btn addtocart"><i class="fa fa-shopping-cart"></i> add to
-                                cart</button>
+                            <button class="add-to-cart-btn addtocart"><i class="fa fa-shopping-cart"></i> Sebede
+                                goş</button>
                         </div>
                         <ul class="product-btns">
                             <li><a href="#"><i class="fa fa-heart-o"></i> add to wishlist</a></li>
                             <li><a href="#"><i class="fa fa-exchange"></i> add to compare</a></li>
+                        </ul>
+                        <ul class="product-links">
+                            <li>Bölümi:</li>
+                            <li>{{ $product->category->name }}</li>
                         </ul>
                     </div>
                 </div>
@@ -80,9 +95,9 @@
                 <div class="col-md-12">
                     <div id="product-tab">
                         <ul class="tab-nav">
-                            <li class="active"><a data-toggle="tab" href="#tab1">Description</a></li>
-                            <li><a data-toggle="tab" href="#tab2">Details</a></li>
-                            <li><a data-toggle="tab" href="#tab3">Reviews ({{ $all }})</a></li>
+                            <li class="active"><a data-toggle="tab" href="#tab1">Düşündiriş</a></li>
+                            <li><a data-toggle="tab" href="#tab2">Jikme-jiklikler</a></li>
+                            <li><a data-toggle="tab" href="#tab3">Teswirler ({{ $all }})</a></li>
                         </ul>
 
                         <div class="tab-content">
@@ -199,13 +214,12 @@
                                             <form class="review-form" action="{{ route('show.review', $product->id) }}"
                                                 method="POST">
                                                 @csrf
-                                                <input class="input" type="text" name="name"
-                                                    placeholder="Your Name">
+                                                <input class="input" type="text" name="name" placeholder="Adyňyz">
                                                 <input class="input" type="email" name="email"
-                                                    placeholder="Your Email">
-                                                <textarea class="input" name="discription" placeholder="Your Review"></textarea>
+                                                    placeholder="E-poçtaňyz">
+                                                <textarea class="input" name="discription" placeholder="Teswiriňiz"></textarea>
                                                 <div class="input-rating">
-                                                    <span>Your Rating: </span>
+                                                    <span>Derejäňiz: </span>
                                                     <div class="stars">
                                                         <input id="star5" name="rating" value="5"
                                                             type="radio"><label for="star5"></label>
@@ -219,7 +233,7 @@
                                                             type="radio"><label for="star1"></label>
                                                     </div>
                                                 </div>
-                                                <button class="primary-btn">Submit</button>
+                                                <button class="primary-btn">Ugrat</button>
                                             </form>
                                         </div>
                                     </div>
@@ -237,17 +251,22 @@
         <div class="container">
             <div class="row">
                 <div class="col-md-12">
-                    <div class="section-title text-center">
-                        <h3 class="title">Related Products</h3>
+                    <div class="row">
+                        <div class="products-tabs">
+
+                                <div class="products-slick" data-nav="#slick-nav">
+                                    @foreach ($products as $item)
+                                        @if ($item->category_id == $product->category_id)
+                                            @include('layouts.product')
+                                        @endif
+                                    @endforeach
+                                </div>
+
+                                <div id="slick-nav" class="products-slick-nav"></div>
+                           
+                        </div>
                     </div>
                 </div>
-                @foreach ($products as $item)
-                    @if ($item->category_id == $product->category_id)
-                        <div class="col-md-3 col-xs-6">
-                            @include('layouts.product')
-                        </div>
-                    @endif
-                @endforeach
             </div>
         </div>
     </div>

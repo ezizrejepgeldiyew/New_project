@@ -469,6 +469,7 @@ textarea.input {
 
 .header-search form {
   position: relative;
+  display: flex;
 }
 
 .header-search form .input-select {
@@ -791,7 +792,7 @@ textarea.input {
   padding: 60px 0px;
   margin: 30px 0px;
   background-color: #E4E7ED;
-  background-image: url('../img/hotdeal.png');
+  background-image: url('../img1/hotdeal.png');
   background-position: center;
   background-repeat: no-repeat;
 }
@@ -1199,6 +1200,7 @@ textarea.input {
   display: inline-block !important;
   margin: 0px 2px;
 }
+
 
 .products-slick-nav .slick-prev:before, .products-slick-nav .slick-next:before {
   font-size: 14px;
@@ -2006,6 +2008,8 @@ textarea.input {
 #footer {
   background: #15161D;
   color: #B9BABC;
+  box-shadow: 0 0 0 100vmax #15161d;
+  clip-path: inset(0 -100vmax);
 }
 
 #bottom-footer {
@@ -2189,4 +2193,33 @@ textarea.input {
     float: none;
     margin-top: 10px;
   }
+}
+
+
+#rahman {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: nowrap;
+    overflow: hidden;
+    width: calc(100% / 3);
+}
+
+
+#txtSearch {
+    border-top-left-radius: 40px;
+    border-bottom-left-radius: 40px;
+    padding-left: 30px;
+    width: 100%;
+}
+
+
+.header-search {
+    width: 70%;
+    margin-inline: auto;
+}
+
+
+.header-search__form {
+    display: flex;
 }
