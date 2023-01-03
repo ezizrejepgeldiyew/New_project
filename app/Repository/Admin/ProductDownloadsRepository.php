@@ -15,18 +15,18 @@ class ProductDownloadsRepository implements ProductDownloadsInterface
 
     public function take()
     {
-        return ProductDownloads::with('product')->orderBy('download','desc')->get()->take(1);
+        return ProductDownloads::with('product')->orderBy('download', 'desc')->get()->take(1);
     }
 
     public static function store($request)
     {
         foreach ($request as $key => $value) {
             ProductDownloads::where('product_id', $key)->count() > 0 ?
-            ProductDownloads::where('product_id', $key)->increment('download', $value) :
-            ProductDownloads::create([
-                'product_id' => $key,
-                'download' => $value,
-            ]);
+                ProductDownloads::where('product_id', $key)->increment('download', $value) :
+                ProductDownloads::create([
+                    'product_id' => $key,
+                    'download' => $value,
+                ]);
         }
     }
 }

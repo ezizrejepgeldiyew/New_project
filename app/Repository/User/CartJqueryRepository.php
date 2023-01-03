@@ -20,7 +20,7 @@ class CartJqueryRepository implements CartJqueryInterface
         $cart = session()->get('cart', []);
         if (isset($cart[$id])) {
             $cart[$id]['quantity']++;
-        } else {
+        } else { 
             $cart[$id] = [
                 "id" => $id,
                 "name" => $product->name,

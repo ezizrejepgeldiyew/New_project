@@ -46,7 +46,7 @@ class ProductRepository implements ProductInterface
         $data['photos'] = PhotoSettings::updatePhotos($data['photos'], $this->MultiplePhotosFolder, $product['photos']);
 
         return $product->update($data);
-    }
+    } 
 
     public function destroy($id)
     {

@@ -15,6 +15,7 @@ class OurBrandRepository implements OurBrandInterface
     {
         $this->ourBrand = $ourBrand;
     }
+    
     public function get()
     {
         return Ourbrand::get();

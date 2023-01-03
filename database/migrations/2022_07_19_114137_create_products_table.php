@@ -20,7 +20,7 @@ class CreateProductsTable extends Migration
             $table->string('category_id');
             $table->string('ourbrand_id');
             $table->string('name');
-            $table->string('price');
+            $table->integer('price');
             $table->string('discount')->nullable();
             $table->text('description');
             $table->string('rating')->nullable();

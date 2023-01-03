@@ -55,7 +55,7 @@ Table OF Contents
 	Typography
 \*----------------------------*/
 
-
+@import url('https://fonts.googleapis.com/css2?family=Nanum+Gothic:wght@400;700&display=swap');
 
 body {
   font-family: 'Montserrat', sans-serif;
@@ -2222,4 +2222,52 @@ textarea.input {
 
 .header-search__form {
     display: flex;
+}
+
+
+.changeLang, .select {
+background-color: #15161D;
+color: white;
+padding-inline: 20px;
+border: #0e6d49;
+}
+
+#load-more {
+    padding: 5px 10px;
+    border-radius: 0.5rem;
+    background: red;
+    color: white;
+    font-weight: 700;
+    font-size: 1.8rem;
+    border: none;
+    margin-inline: auto;
+    transition:  0.5s ease;
+    overflow: hidden;
+}
+
+#load-more::after {
+    content: ">>";
+    opacity: 0;
+    display: none;
+    transition: 1s ease forwards;
+    font-family: 'Nanum Gothic', sans-serif;
+}
+
+.show-more-btn-cont {
+    display: block;
+    width: 100%;
+    text-align: right;
+}
+
+
+#load-more:hover {
+   background-color: #fff;
+   color: red;
+   border: 1px solid red;
+    padding-right: 30px;
+}
+
+#load-more:hover::after {
+    opacity: 1;
+    display: inline-block;
 }

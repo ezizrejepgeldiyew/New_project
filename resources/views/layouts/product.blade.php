@@ -1,3 +1,4 @@
+
 <div class="product wishlist">
     <div class="product-img">
         <img src="{{ asset('images/' . $item->photo) }}" alt="">
@@ -15,7 +16,7 @@
         <h3 class="product-name"><a href="#">{{ $item->name }}</a></h3>
         @isset($item->discount)
             <h4 class="product-price">{{ ($item->price / 100) * 30 }}<del
-                    class="product-old-price">{{ $item->price }}TMT</del>
+                    class="product-old-price">{{ $item->price }} </del>
             </h4>
         @else
             <h4 class="product-price">{{ $item->price }}</h4>
@@ -30,14 +31,14 @@
             @endfor
         </div>
         <div class="product-btns">
-            <button class="fa fa-heart-o"
-                onclick="myWishFunction({{ $item->id }})" type="submit" id="fav{{ $item->id }}"></i>
+            <button class="fa fa-heart-o" onclick="myWishFunction({{ $item->id }})" type="submit"
+                id="fav{{ $item->id }}"></i>
                 <span class="tooltipp">add to
                     wishlist</span></button>
             <button class="add-to-compare"><i class="fa fa-exchange"></i><span class="tooltipp">add to
                     compare</span></button>
-            <button class="quick-view"><a href="{{ route('show', $item->id) }}"><i
-                        class="fa fa-eye"></i></a><span class="tooltipp">quick view</span></button>
+            <button class="quick-view"><a href="{{ route('show', $item->id) }}"><i class="fa fa-eye"></i></a><span
+                    class="tooltipp">quick view</span></button>
         </div>
     </div>
     <div class="add-to-cart" id="cart{{ $item->id }}" data-id="{{ $item->id }}">
@@ -68,14 +69,12 @@
                     text += '/' + $element.image +
                         ' alt="" ></div> <div class="product-body" ><h3 class="product-name">' +
                         $element.name + '</h3 ><h4 class="product-price"><span class="qty"> ' +
-                        $element.quantity + 'x </span> $' + $element.price + '</h4></div></div>'
+                        $element.quantity + 'x </span>' + $element.price + '</h4></div></div>'
                     all_text = text + all_text
                 });
                 $('.cart-list').html(all_text)
                 $(".cart_qty").html(sum);
             });
         }
-
-
     </script>
 @endsection

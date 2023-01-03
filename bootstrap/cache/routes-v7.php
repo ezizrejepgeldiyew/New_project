@@ -24,7 +24,7 @@ app('router')->setCompiledRoutes(
         array (
           0 => 
           array (
-            '_route' => 'generated::mu9k9JPro9qPDJfu',
+            '_route' => 'generated::IQL1iYAgxl3rfz7s',
           ),
           1 => NULL,
           2 => 
@@ -44,7 +44,7 @@ app('router')->setCompiledRoutes(
         array (
           0 => 
           array (
-            '_route' => 'generated::yTUk5jQq7JGTDQtH',
+            '_route' => 'generated::sDQygHjp3uvfnirB',
           ),
           1 => NULL,
           2 => 
@@ -64,7 +64,7 @@ app('router')->setCompiledRoutes(
         array (
           0 => 
           array (
-            '_route' => 'generated::pUwGe4QJ53QxhRAZ',
+            '_route' => 'generated::eRYus05YIiWfNOko',
           ),
           1 => NULL,
           2 => 
@@ -216,72 +216,13 @@ app('router')->setCompiledRoutes(
           6 => NULL,
         ),
       ),
-      '/store/search-filter' => 
+      '/store/load-more' => 
       array (
         0 => 
         array (
           0 => 
           array (
-            '_route' => 'store.search_filter',
-          ),
-          1 => NULL,
-          2 => 
-          array (
-            'GET' => 0,
-            'HEAD' => 1,
-          ),
-          3 => NULL,
-          4 => false,
-          5 => false,
-          6 => NULL,
-        ),
-      ),
-      '/store/price-filter' => 
-      array (
-        0 => 
-        array (
-          0 => 
-          array (
-            '_route' => 'store.price_filter',
-          ),
-          1 => NULL,
-          2 => 
-          array (
-            'POST' => 0,
-          ),
-          3 => NULL,
-          4 => false,
-          5 => false,
-          6 => NULL,
-        ),
-      ),
-      '/store/checkbox-filter' => 
-      array (
-        0 => 
-        array (
-          0 => 
-          array (
-            '_route' => 'store.checkbox_filter',
-          ),
-          1 => NULL,
-          2 => 
-          array (
-            'GET' => 0,
-            'HEAD' => 1,
-          ),
-          3 => NULL,
-          4 => false,
-          5 => false,
-          6 => NULL,
-        ),
-      ),
-      '/store/sort' => 
-      array (
-        0 => 
-        array (
-          0 => 
-          array (
-            '_route' => 'store.sort',
+            '_route' => 'store.loadMore',
           ),
           1 => NULL,
           2 => 
@@ -357,7 +298,7 @@ app('router')->setCompiledRoutes(
         array (
           0 => 
           array (
-            '_route' => 'generated::auJywlXtknXYinzQ',
+            '_route' => 'generated::AC0TsQLV71DZ7Ems',
           ),
           1 => NULL,
           2 => 
@@ -412,7 +353,7 @@ app('router')->setCompiledRoutes(
         array (
           0 => 
           array (
-            '_route' => 'generated::Fljh8Oe9FEUjGqym',
+            '_route' => 'generated::4bx8aoesBbfcMApI',
           ),
           1 => NULL,
           2 => 
@@ -503,7 +444,7 @@ app('router')->setCompiledRoutes(
         array (
           0 => 
           array (
-            '_route' => 'generated::TZ5buFgemICokREM',
+            '_route' => 'generated::CxEetnfWzDj46zgA',
           ),
           1 => NULL,
           2 => 
@@ -912,7 +853,7 @@ app('router')->setCompiledRoutes(
     ),
     2 => 
     array (
-      0 => '{^(?|/a(?|pi/(?|show/([^/]++)(*:31)|update/([^/]++)(*:53)|delete/([^/]++)(*:75))|dmin/(?|category/(?|update/([^/]++)(*:118)|destroy/([^/]++)(*:142))|product/(?|update/([^/]++)(*:177)|destroy/([^/]++)(*:201))|ourbrand/(?|update/([^/]++)(*:237)|destroy/([^/]++)(*:261))|money\\-cours/(?|update/([^/]++)(*:301)|destroy/([^/]++)(*:325))|notices/(?|update/([^/]++)(*:360)|destroy/([^/]++)(*:384))|aboutUs/(?|update/([^/]++)(*:419)|destroy/([^/]++)(*:443))))|/s(?|how/(?|([^/]++)(*:474)|review/([^/]++)(*:497))|tore/show(?:/([^/]++))?(*:529))|/update_money(?:/([^/]++))?(*:565)|/password/reset/([^/]++)(*:597))/?$}sDu',
+      0 => '{^(?|/a(?|pi/(?|show/([^/]++)(*:31)|update/([^/]++)(*:53)|delete/([^/]++)(*:75))|dmin/(?|category/(?|update/([^/]++)(*:118)|destroy/([^/]++)(*:142))|product/(?|update/([^/]++)(*:177)|destroy/([^/]++)(*:201))|ourbrand/(?|update/([^/]++)(*:237)|destroy/([^/]++)(*:261))|money\\-cours/(?|update/([^/]++)(*:301)|destroy/([^/]++)(*:325))|notices/(?|update/([^/]++)(*:360)|destroy/([^/]++)(*:384))|aboutUs/(?|update/([^/]++)(*:419)|destroy/([^/]++)(*:443))))|/show/(?|([^/]++)(*:471)|review/([^/]++)(*:494))|/change\\-language/([^/]++)(*:529)|/update_money(?:/([^/]++))?(*:564)|/password/reset/([^/]++)(*:596))/?$}sDu',
     ),
     3 => 
     array (
@@ -922,7 +863,7 @@ app('router')->setCompiledRoutes(
         array (
           0 => 
           array (
-            '_route' => 'generated::CTyGB1rkDJMrLOT4',
+            '_route' => 'generated::vItlz1dI3JJYtp6e',
           ),
           1 => 
           array (
@@ -945,7 +886,7 @@ app('router')->setCompiledRoutes(
         array (
           0 => 
           array (
-            '_route' => 'generated::5ZFRavfBWB2iycsd',
+            '_route' => 'generated::FVkibA7f7T4xcY2i',
           ),
           1 => 
           array (
@@ -967,7 +908,7 @@ app('router')->setCompiledRoutes(
         array (
           0 => 
           array (
-            '_route' => 'generated::RfQAbMhNYXHVkBMu',
+            '_route' => 'generated::ErFMPhUh9nWihSFd',
           ),
           1 => 
           array (
@@ -1248,7 +1189,7 @@ app('router')->setCompiledRoutes(
           6 => NULL,
         ),
       ),
-      474 => 
+      471 => 
       array (
         0 => 
         array (
@@ -1271,7 +1212,7 @@ app('router')->setCompiledRoutes(
           6 => NULL,
         ),
       ),
-      497 => 
+      494 => 
       array (
         0 => 
         array (
@@ -1299,12 +1240,11 @@ app('router')->setCompiledRoutes(
         array (
           0 => 
           array (
-            '_route' => 'store.show',
-            'changeShow' => NULL,
+            '_route' => 'generated::wdtwHljCKPE30bVR',
           ),
           1 => 
           array (
-            0 => 'changeShow',
+            0 => 'lang',
           ),
           2 => 
           array (
@@ -1317,7 +1257,7 @@ app('router')->setCompiledRoutes(
           6 => NULL,
         ),
       ),
-      565 => 
+      564 => 
       array (
         0 => 
         array (
@@ -1341,7 +1281,7 @@ app('router')->setCompiledRoutes(
           6 => NULL,
         ),
       ),
-      597 => 
+      596 => 
       array (
         0 => 
         array (
@@ -1379,7 +1319,7 @@ app('router')->setCompiledRoutes(
   ),
   'attributes' => 
   array (
-    'generated::mu9k9JPro9qPDJfu' => 
+    'generated::IQL1iYAgxl3rfz7s' => 
     array (
       'methods' => 
       array (
@@ -1400,7 +1340,7 @@ app('router')->setCompiledRoutes(
         array (
           0 => 'web',
         ),
-        'as' => 'generated::mu9k9JPro9qPDJfu',
+        'as' => 'generated::IQL1iYAgxl3rfz7s',
       ),
       'fallback' => false,
       'defaults' => 
@@ -1416,7 +1356,7 @@ app('router')->setCompiledRoutes(
       'waitSeconds' => NULL,
       'withTrashed' => false,
     ),
-    'generated::yTUk5jQq7JGTDQtH' => 
+    'generated::sDQygHjp3uvfnirB' => 
     array (
       'methods' => 
       array (
@@ -1438,7 +1378,7 @@ app('router')->setCompiledRoutes(
         'where' => 
         array (
         ),
-        'as' => 'generated::yTUk5jQq7JGTDQtH',
+        'as' => 'generated::sDQygHjp3uvfnirB',
       ),
       'fallback' => false,
       'defaults' => 
@@ -1454,7 +1394,7 @@ app('router')->setCompiledRoutes(
       'waitSeconds' => NULL,
       'withTrashed' => false,
     ),
-    'generated::pUwGe4QJ53QxhRAZ' => 
+    'generated::eRYus05YIiWfNOko' => 
     array (
       'methods' => 
       array (
@@ -1475,7 +1415,7 @@ app('router')->setCompiledRoutes(
         'where' => 
         array (
         ),
-        'as' => 'generated::pUwGe4QJ53QxhRAZ',
+        'as' => 'generated::eRYus05YIiWfNOko',
       ),
       'fallback' => false,
       'defaults' => 
@@ -1491,7 +1431,7 @@ app('router')->setCompiledRoutes(
       'waitSeconds' => NULL,
       'withTrashed' => false,
     ),
-    'generated::CTyGB1rkDJMrLOT4' => 
+    'generated::vItlz1dI3JJYtp6e' => 
     array (
       'methods' => 
       array (
@@ -1513,7 +1453,7 @@ app('router')->setCompiledRoutes(
         'where' => 
         array (
         ),
-        'as' => 'generated::CTyGB1rkDJMrLOT4',
+        'as' => 'generated::vItlz1dI3JJYtp6e',
       ),
       'fallback' => false,
       'defaults' => 
@@ -1529,7 +1469,7 @@ app('router')->setCompiledRoutes(
       'waitSeconds' => NULL,
       'withTrashed' => false,
     ),
-    'generated::5ZFRavfBWB2iycsd' => 
+    'generated::FVkibA7f7T4xcY2i' => 
     array (
       'methods' => 
       array (
@@ -1550,7 +1490,7 @@ app('router')->setCompiledRoutes(
         'where' => 
         array (
         ),
-        'as' => 'generated::5ZFRavfBWB2iycsd',
+        'as' => 'generated::FVkibA7f7T4xcY2i',
       ),
       'fallback' => false,
       'defaults' => 
@@ -1566,7 +1506,7 @@ app('router')->setCompiledRoutes(
       'waitSeconds' => NULL,
       'withTrashed' => false,
     ),
-    'generated::RfQAbMhNYXHVkBMu' => 
+    'generated::ErFMPhUh9nWihSFd' => 
     array (
       'methods' => 
       array (
@@ -1588,7 +1528,7 @@ app('router')->setCompiledRoutes(
         'where' => 
         array (
         ),
-        'as' => 'generated::RfQAbMhNYXHVkBMu',
+        'as' => 'generated::ErFMPhUh9nWihSFd',
       ),
       'fallback' => false,
       'defaults' => 
@@ -1617,6 +1557,7 @@ app('router')->setCompiledRoutes(
         'middleware' => 
         array (
           0 => 'web',
+          1 => 'setLocale',
         ),
         'uses' => 'App\\Http\\Controllers\\User\\IndexController@index',
         'controller' => 'App\\Http\\Controllers\\User\\IndexController@index',
@@ -1654,6 +1595,7 @@ app('router')->setCompiledRoutes(
         'middleware' => 
         array (
           0 => 'web',
+          1 => 'setLocale',
         ),
         'uses' => 'App\\Http\\Controllers\\User\\IndexController@store',
         'controller' => 'App\\Http\\Controllers\\User\\IndexController@store',
@@ -1691,6 +1633,7 @@ app('router')->setCompiledRoutes(
         'middleware' => 
         array (
           0 => 'web',
+          1 => 'setLocale',
         ),
         'uses' => 'App\\Http\\Controllers\\User\\IndexController@show',
         'controller' => 'App\\Http\\Controllers\\User\\IndexController@show',
@@ -1728,6 +1671,7 @@ app('router')->setCompiledRoutes(
         'middleware' => 
         array (
           0 => 'web',
+          1 => 'setLocale',
         ),
         'uses' => 'App\\Http\\Controllers\\User\\IndexController@checkout',
         'controller' => 'App\\Http\\Controllers\\User\\IndexController@checkout',
@@ -1765,6 +1709,7 @@ app('router')->setCompiledRoutes(
         'middleware' => 
         array (
           0 => 'web',
+          1 => 'setLocale',
         ),
         'uses' => 'App\\Http\\Controllers\\User\\IndexController@cart',
         'controller' => 'App\\Http\\Controllers\\User\\IndexController@cart',
@@ -1774,6 +1719,44 @@ app('router')->setCompiledRoutes(
         array (
         ),
         'as' => 'cart',
+      ),
+      'fallback' => false,
+      'defaults' => 
+      array (
+      ),
+      'wheres' => 
+      array (
+      ),
+      'bindingFields' => 
+      array (
+      ),
+      'lockSeconds' => NULL,
+      'waitSeconds' => NULL,
+      'withTrashed' => false,
+    ),
+    'generated::wdtwHljCKPE30bVR' => 
+    array (
+      'methods' => 
+      array (
+        0 => 'GET',
+        1 => 'HEAD',
+      ),
+      'uri' => 'change-language/{lang}',
+      'action' => 
+      array (
+        'middleware' => 
+        array (
+          0 => 'web',
+          1 => 'setLocale',
+        ),
+        'uses' => 'App\\Http\\Controllers\\User\\IndexController@changeLang',
+        'controller' => 'App\\Http\\Controllers\\User\\IndexController@changeLang',
+        'namespace' => NULL,
+        'prefix' => '',
+        'where' => 
+        array (
+        ),
+        'as' => 'generated::wdtwHljCKPE30bVR',
       ),
       'fallback' => false,
       'defaults' => 
@@ -1936,169 +1919,22 @@ app('router')->setCompiledRoutes(
       'waitSeconds' => NULL,
       'withTrashed' => false,
     ),
-    'store.search_filter' => 
-    array (
-      'methods' => 
-      array (
-        0 => 'GET',
-        1 => 'HEAD',
-      ),
-      'uri' => 'store/search-filter',
-      'action' => 
-      array (
-        'middleware' => 
-        array (
-          0 => 'web',
-        ),
-        'uses' => 'App\\Repository\\User\\StoreRepository@searchFilter',
-        'controller' => 'App\\Repository\\User\\StoreRepository@searchFilter',
-        'as' => 'store.search_filter',
-        'namespace' => NULL,
-        'prefix' => '/store',
-        'where' => 
-        array (
-        ),
-      ),
-      'fallback' => false,
-      'defaults' => 
-      array (
-      ),
-      'wheres' => 
-      array (
-      ),
-      'bindingFields' => 
-      array (
-      ),
-      'lockSeconds' => NULL,
-      'waitSeconds' => NULL,
-      'withTrashed' => false,
-    ),
-    'store.price_filter' => 
+    'store.loadMore' => 
     array (
       'methods' => 
       array (
         0 => 'POST',
       ),
-      'uri' => 'store/price-filter',
+      'uri' => 'store/load-more',
       'action' => 
       array (
         'middleware' => 
         array (
           0 => 'web',
         ),
-        'uses' => 'App\\Repository\\User\\StoreRepository@priceFilter',
-        'controller' => 'App\\Repository\\User\\StoreRepository@priceFilter',
-        'as' => 'store.price_filter',
-        'namespace' => NULL,
-        'prefix' => '/store',
-        'where' => 
-        array (
-        ),
-      ),
-      'fallback' => false,
-      'defaults' => 
-      array (
-      ),
-      'wheres' => 
-      array (
-      ),
-      'bindingFields' => 
-      array (
-      ),
-      'lockSeconds' => NULL,
-      'waitSeconds' => NULL,
-      'withTrashed' => false,
-    ),
-    'store.checkbox_filter' => 
-    array (
-      'methods' => 
-      array (
-        0 => 'GET',
-        1 => 'HEAD',
-      ),
-      'uri' => 'store/checkbox-filter',
-      'action' => 
-      array (
-        'middleware' => 
-        array (
-          0 => 'web',
-        ),
-        'uses' => 'App\\Repository\\User\\StoreRepository@checkboxFilter',
-        'controller' => 'App\\Repository\\User\\StoreRepository@checkboxFilter',
-        'as' => 'store.checkbox_filter',
-        'namespace' => NULL,
-        'prefix' => '/store',
-        'where' => 
-        array (
-        ),
-      ),
-      'fallback' => false,
-      'defaults' => 
-      array (
-      ),
-      'wheres' => 
-      array (
-      ),
-      'bindingFields' => 
-      array (
-      ),
-      'lockSeconds' => NULL,
-      'waitSeconds' => NULL,
-      'withTrashed' => false,
-    ),
-    'store.show' => 
-    array (
-      'methods' => 
-      array (
-        0 => 'GET',
-        1 => 'HEAD',
-      ),
-      'uri' => 'store/show/{changeShow?}',
-      'action' => 
-      array (
-        'middleware' => 
-        array (
-          0 => 'web',
-        ),
-        'uses' => 'App\\Repository\\User\\StoreRepository@showCookie',
-        'controller' => 'App\\Repository\\User\\StoreRepository@showCookie',
-        'as' => 'store.show',
-        'namespace' => NULL,
-        'prefix' => '/store',
-        'where' => 
-        array (
-        ),
-      ),
-      'fallback' => false,
-      'defaults' => 
-      array (
-      ),
-      'wheres' => 
-      array (
-      ),
-      'bindingFields' => 
-      array (
-      ),
-      'lockSeconds' => NULL,
-      'waitSeconds' => NULL,
-      'withTrashed' => false,
-    ),
-    'store.sort' => 
-    array (
-      'methods' => 
-      array (
-        0 => 'POST',
-      ),
-      'uri' => 'store/sort',
-      'action' => 
-      array (
-        'middleware' => 
-        array (
-          0 => 'web',
-        ),
-        'uses' => 'App\\Repository\\User\\StoreRepository@sortCookie',
-        'controller' => 'App\\Repository\\User\\StoreRepository@sortCookie',
-        'as' => 'store.sort',
+        'uses' => 'App\\Repository\\User\\StoreRepository@loadMore',
+        'controller' => 'App\\Repository\\User\\StoreRepository@loadMore',
+        'as' => 'store.loadMore',
         'namespace' => NULL,
         'prefix' => '/store',
         'where' => 
@@ -2266,7 +2102,7 @@ app('router')->setCompiledRoutes(
       'waitSeconds' => NULL,
       'withTrashed' => false,
     ),
-    'generated::auJywlXtknXYinzQ' => 
+    'generated::AC0TsQLV71DZ7Ems' => 
     array (
       'methods' => 
       array (
@@ -2286,7 +2122,7 @@ app('router')->setCompiledRoutes(
         'where' => 
         array (
         ),
-        'as' => 'generated::auJywlXtknXYinzQ',
+        'as' => 'generated::AC0TsQLV71DZ7Ems',
       ),
       'fallback' => false,
       'defaults' => 
@@ -2375,7 +2211,7 @@ app('router')->setCompiledRoutes(
       'waitSeconds' => NULL,
       'withTrashed' => false,
     ),
-    'generated::Fljh8Oe9FEUjGqym' => 
+    'generated::4bx8aoesBbfcMApI' => 
     array (
       'methods' => 
       array (
@@ -2395,7 +2231,7 @@ app('router')->setCompiledRoutes(
         'where' => 
         array (
         ),
-        'as' => 'generated::Fljh8Oe9FEUjGqym',
+        'as' => 'generated::4bx8aoesBbfcMApI',
       ),
       'fallback' => false,
       'defaults' => 
@@ -2594,7 +2430,7 @@ app('router')->setCompiledRoutes(
       'waitSeconds' => NULL,
       'withTrashed' => false,
     ),
-    'generated::TZ5buFgemICokREM' => 
+    'generated::CxEetnfWzDj46zgA' => 
     array (
       'methods' => 
       array (
@@ -2614,7 +2450,7 @@ app('router')->setCompiledRoutes(
         'where' => 
         array (
         ),
-        'as' => 'generated::TZ5buFgemICokREM',
+        'as' => 'generated::CxEetnfWzDj46zgA',
       ),
       'fallback' => false,
       'defaults' => 

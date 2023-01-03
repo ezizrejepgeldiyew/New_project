@@ -29,13 +29,13 @@
                                 class="fa fa-map-marker"></i> {{ $aboutUs->map }}</a></li>
                 </ul>
                 <ul class="header-links pull-right">
-                    <li> <select class="form-control changeLang">
-                            <option value="en" {{ session()->get('locale') == 'en' ? 'selected' : '' }}>English
-                            </option>
-                            <option value="fr" {{ session()->get('locale') == 'fr' ? 'selected' : '' }}>France
-                            </option>
-                            <option value="sp" {{ session()->get('locale') == 'sp' ? 'selected' : '' }}>Spanish
-                            </option>
+                    <li> <select class="form-control changeLang" onchange="changeLang()">
+                            <option
+                                {{ session()->has('lang_code') ? (session()->get('lang_code') == 'en' ? 'selected' : '') : '' }}
+                                value="en">English</option>
+                            <option
+                                {{ session()->has('lang_code') ? (session()->get('lang_code') == 'tm' ? 'selected' : '') : '' }}
+                                value="tm">Turkmen</option>
                         </select>
                     </li>
 
@@ -55,8 +55,8 @@
                     </li>
 
                     @guest
-                        <li><a href="{{ route('login') }}"><i class="fa fa-user-o"></i> Giriş</a></li>
-                        <li><a href="{{ route('register') }}"><i class="fa fa-user-o"></i> Agza bolmak</a></li>
+                        <li><a href="{{ route('login') }}"><i class="fa fa-user-o"></i> {{ __('message.login') }}</a></li>
+                        <li><a href="{{ route('register') }}"><i class="fa fa-user-o"></i> {{ __('message.register') }}</a></li>
                     @endguest
 
                     @auth
@@ -65,7 +65,7 @@
                         </li>
                         <li>
                             <form action="{{ route('logout') }}" method="post"> @csrf
-                                <button type="submit"> Çykmak</button>
+                                <button type="submit"> {{ __('message.logout') }}</button>
                             </form>
                         </li>
                     @endauth
@@ -177,12 +177,12 @@
         <div class="container">
             <div id="responsive-nav">
                 <ul class="main-nav nav navbar-nav">
-                    <li class=" @if (Request::routeIs('index')) active @endif"><a href="{{ route('index') }}">Baş
-                            sahypa</a></li>
+                    <li class=" @if (Request::routeIs('index')) active @endif"><a href="{{ route('index') }}">{{ __('message.home') }}</a></li>
                     <li class=" @if (Request::routeIs('cart')) active @endif"><a
-                            href="{{ route('cart') }}">Sebet</a></li>
+                            href="{{ route('cart') }}">{{ __('message.cart') }}</a>
+                    </li>
                     <li class=" @if (Request::routeIs('store')) active @endif"><a
-                            href="{{ route('store') }}">Harytlar</a></li>
+                            href="{{ route('store') }}">{{ __('message.store') }}</a></li>
                 </ul>
             </div>
         </div>
@@ -210,11 +210,23 @@
                 _token: "{{ csrf_token() }}"
             }
             $.get('{{ route('update_money') }}' + '/' + id, data, function(response) {
-                console.log(response);
                 location.reload()
             });
-
         }
+
+        function changeLang() {
+            let lang = $('.changeLang').val()
+
+            window.location = '{{ url('change-language') }}/' + lang;
+        }
+
+        // function changeLang() {
+        //     let lang = $('.changeLang').val()
+        //     console.log(history.pushState());
+        //     // if (lang == 'en') window.location.href = '{{ url('en') }}'
+        //     // if (lang == 'tm') window.location.href = '{{ url('tm') }}'
+        //     // if (lang == 'es') window.location.href = '{{ url('es') }}'
+        // }
     </script>
 </body>
 

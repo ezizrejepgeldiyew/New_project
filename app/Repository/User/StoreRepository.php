@@ -8,62 +8,7 @@ use Illuminate\Support\Facades\Cookie;
 
 class StoreRepository implements StoreInterface
 {
-    public function searchFilter()
-    {
-        $text = request('text');
-        $search = Product::whereHas('ourbrand', function ($query) use ($text) {
-            $query->where('name', 'Like', "%$text%");
-        })->orWhere('name', 'Like', "%$text%")->with('category')->get();
-        return response()->json($search, 200);
-    }
-
-    public function priceFilter()
-    {
-        $minVal = (int)request('minVal');
-        $maxVal = (int)request('maxVal');
-        $data = Product::where('price', '>=', $minVal)->where('price', '<=', $maxVal)->with('category')->get();
-        return response()->json($data, 200);
-    }
-
-    public function checkboxFilter()
-    {
-        $id = request('id');
-        $cart1 = [];
-        if ($id == null) {
-            $cart = Product::with('category')->get();
-            array_push($cart1, $cart);
-        } else {
-            foreach ($id as $key => $value) {
-
-                $cart = Product::where('category_id', $value)->with('category')->get();
-                array_push($cart1, $cart);
-            }
-        }
-        return response()->json($cart1, 200);
-    }
-
-    public function showCookie()
-    {
-        $changeShow = (int)request('changeShow');
-
-        if ($changeShow > 0 && !empty($this->getCookie('changeShow'))) {
-            Cookie::queue('changeShow', $changeShow);
-        }
-        if ($changeShow == 0 && empty($this->getCookie('changeShow'))) {
-            Cookie::queue('changeShow', 5);
-        }
-        $sortBy = Cookie::get('sortBy');
-        if ($sortBy == 0) {
-            return Product::paginate($this->getCookie('changeShow'));
-        } elseif ($sortBy == 1) {
-            $orderBy = 'asc';
-        }  else {
-            $orderBy = 'desc';
-        }
-        return Product::orderBy('price', $orderBy)->paginate($this->getCookie('changeShow'));
-    }
-
-    public function sortCookie()
+    public function loadMore()
     {
         $sortName = request('sortName');
         $sortBy = (int)request('sortBy');
@@ -73,8 +18,87 @@ class StoreRepository implements StoreInterface
         }
         if (empty($sortName) && empty($this->getCookie('sortName'))) {
             Cookie::queue('sortName', 'Saýlanmadyk');
-            Cookie::queue('sortBy', 0);
+            Cookie::queue('sortBy', 3);
         }
+
+        $query = new Product();
+
+        if (empty(request('sortBy'))) $sortBy = Cookie::get('sortBy');
+
+        $loadMore = (int)request('load');
+
+        if ($sortBy != 3) {
+            $orderBy = $sortBy == 2 ?  'desc' : 'asc';
+        }
+
+        if ($loadMore == 0) {
+            if ($sortBy == 3) {
+                return Product::limit(6)->get();
+            } else {
+                return Product::orderBy('price', $orderBy)->limit(6)->get();
+            }
+        }
+
+        if (!empty(request('search'))) {
+            $query = self::searchFilter($query, request('search'));
+        }
+
+        $query = self::priceFilter($query, request('minVal'), request('maxVal'));
+
+
+        if (request('arr_id') != null) {
+            $query = self::checkboxFilter($query, request('arr_id'));
+        }
+
+        $limit = 3;
+
+        if ($loadMore == 9) {
+            $loadMore = 3;
+            $limit = 9;
+        } elseif ($loadMore == 6) {
+            $loadMore = 3;
+            $limit = 6;
+        }
+
+        if ($sortBy == 3) {
+            $query = $query->with('category')->offset($loadMore - 3)->limit($limit)->get();
+        } else {
+            $query = $query->with('category')->orderBy('price', $orderBy)->offset($loadMore - 3)->limit($limit)->get();
+        }
+
+        return response()->json($query, 200);
+    }
+
+    private function searchFilter($query, $search)
+    {
+        return $query->where(function ($q) use ($search) {
+            $q->whereHas('ourbrand', function ($query1) use ($search) {
+                $query1->where('name', 'Like', "%$search%");
+            })->orWhere('name', 'Like', "%$search%");
+        });
+    }
+
+    private function priceFilter($query, $minVal, $maxVal)
+    {
+        return $query->whereBetween('price',  [$minVal, $maxVal]);
+    }
+
+    private function checkboxFilter($query, $arr_id)
+    {
+        return  $query->whereIn('category_id', $arr_id);
+    }
+
+    public function sortCookie()
+    {
+        if (!empty(request('sortName')) && !empty($this->getCookie('sortName'))) {
+            Cookie::queue('sortName', request('sortName'));
+            Cookie::queue('sortBy', request('sortBy'));
+        }
+        if (empty($sortName) && empty($this->getCookie('sortName'))) {
+            Cookie::queue('sortName', 'Saýlanmadyk');
+            Cookie::queue('sortBy', 3);
+        }
+        return null;
     }
 
     public function getCookie($title)

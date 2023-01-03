@@ -35,12 +35,12 @@ class Product extends Model
 
     public function getPriceAttribute($value)
     {
-        if(Session::has('money'))
-        foreach (session('money') as $item) {
-            $price = $value / $item['price'];
-            $name = $item['name'];
-            return "{$price} {$name}";
-        }
+        if (Session::has('money'))
+            foreach (session('money') as $item) {
+                $price = round(($value / $item['price']), 5);
+                $name = $item['name']; 
+                return "{$price} {$name}";
+            }
         return $value;
     }
 }

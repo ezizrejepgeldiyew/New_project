@@ -18,6 +18,7 @@ use App\Repository\Admin\MoneyCoursRepository;
 use App\Repository\User\CartJqueryRepository;
 use App\Repository\User\ShowRepository;
 use App\Repository\User\StoreRepository;
+use Illuminate\Support\Facades\App;
 use Illuminate\Support\Facades\Auth;
 
 /*
@@ -33,30 +34,27 @@ use Illuminate\Support\Facades\Auth;
 
 
 
-
 Route::controller(IndexController::class)->group(function () {
-    Route::get('/', 'index')->name('index');
-    Route::get('store', 'store')->name('store');
-    Route::get('show/{id}', 'show')->name('show');
-    Route::get('checkout', 'checkout')->name('checkout');
-    Route::get('cart', 'cart')->name('cart');
+Route::middleware('setLocale')->group(function (){
+        Route::get('/', 'index')->name('index');
+        Route::get('/store', 'store')->name('store');
+        Route::get('/show/{id}', 'show')->name('show');
+        Route::get('/checkout', 'checkout')->name('checkout');
+        Route::get('/cart', 'cart')->name('cart');
+        Route::get('/change-language/{lang}','changeLang');
+    });
 });
-
 
 Route::get('update_money/{id?}', [MoneyCoursRepository::class, 'updateMoney'])->name('update_money');
 
-Route::prefix('cartjquery/')->name('cartjquery.')->controller(CartJqueryRepository::class)->group(function(){
-    Route::get('store', 'store') ->name('store');
-    Route::post('update', 'update') ->name('update');
-    Route::get('remove', 'remove') ->name('remove');
+Route::prefix('cartjquery/')->name('cartjquery.')->controller(CartJqueryRepository::class)->group(function () {
+    Route::get('store', 'store')->name('store');
+    Route::post('update', 'update')->name('update');
+    Route::get('remove', 'remove')->name('remove');
 });
 
 Route::prefix('store/')->name('store.')->controller(StoreRepository::class)->group(function () {
-    Route::get('search-filter', 'searchFilter')->name('search_filter');
-    Route::post('price-filter', 'priceFilter')->name('price_filter');
-    Route::get('checkbox-filter', 'checkboxFilter')->name('checkbox_filter');
-    Route::get('show/{changeShow?}', 'showCookie')->name('show');
-    Route::post('sort', 'sortCookie')->name('sort');
+    Route::post('load-more', 'loadMore')->name('loadMore');
 });
 
 Route::prefix('show/')->name('show.')->controller(ShowRepository::class)->group(function () {
@@ -132,8 +130,7 @@ Route::prefix('admin/')->middleware(['admin'])->group(function () {
         Route::get('orders-false', 'ordersFalse')->name('orders_false');
     });
 
-    Route::prefix('online-users')->name('online_users.')->controller(OnlineUsersController::class)->group(function(){
+    Route::prefix('online-users')->name('online_users.')->controller(OnlineUsersController::class)->group(function () {
         Route::get('index', 'index')->name('index');
     });
-
 });

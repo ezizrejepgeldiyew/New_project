@@ -3,7 +3,6 @@
 namespace App\Http\Controllers\User;
 
 use App\Http\Controllers\Controller;
-use App\Models\Product;
 use App\Repository\Admin\AboutUsRepository;
 use App\Repository\Admin\CategoryRepository;
 use App\Repository\Admin\MoneyCoursRepository;
@@ -13,10 +12,18 @@ use App\Repository\Admin\ProductDownloadsRepository;
 use App\Repository\Admin\ProductRepository;
 use App\Repository\User\ShowRepository;
 use App\Repository\User\StoreRepository;
+use Illuminate\Support\Facades\App;
 use Illuminate\Support\Facades\Cache;
 
 class IndexController extends Controller
 {
+    function changeLang($langcode){
+
+        App::setLocale($langcode);
+        session()->put("lang_code",$langcode);
+        return redirect()->back();
+    }
+
     public function index(
         MoneyCoursRepository $moneyCours,
         NoticesRepository $notices,
@@ -28,7 +35,8 @@ class IndexController extends Controller
         //     return Product::all();
         // });
         // dd(Cache::get('key'));
-        return view('User.index',
+        return view(
+            'User.index',
             [
                 'money_cours' => $moneyCours->get(),
                 'notices' => $notices->get(),
@@ -47,16 +55,13 @@ class IndexController extends Controller
         AboutUsRepository $aboutUs,
         ProductDownloadsRepository $productDownload
     ) {
-
-        return view('User.store',
+        return view(
+            'User.store',
             [
                 'category' => $category->get(),
                 'ourbrand' => $ourbrand->get(),
-                'product' => $store->showCookie(),
+                'product' => $store->loadMore(),
                 'topSelling' => $productDownload->take(),
-                'showCookieName' => $store->getCookie('changeShow'),
-                'sortCookieName' => $store->getCookie('sortName'),
-                'sort' => $store->sortCookie(),
                 'money_cours' => $moneyCours->get(),
                 'aboutUs' => $aboutUs->first(),
             ]
@@ -71,8 +76,9 @@ class IndexController extends Controller
         ShowRepository $show,
         AboutUsRepository $aboutUs
     ) {
-        // dd($product->get());
-        return view('User.product',
+
+        return view(
+            'User.product',
             [
                 'money_cours' => $moneyCours->get(),
                 'category' => $category->get(),
@@ -91,7 +97,8 @@ class IndexController extends Controller
         MoneyCoursRepository $moneyCours,
         AboutUsRepository $aboutUs
     ) {
-        return view('User.checkout',
+        return view(
+            'User.checkout',
             [
                 'category' => $category->get(),
                 'money_cours' => $moneyCours->get(),
@@ -105,7 +112,8 @@ class IndexController extends Controller
         CategoryRepository $category,
         AboutUsRepository $aboutUs
     ) {
-        return view('User.cart',
+        return view(
+            'User.cart',
             [
                 'money_cours' => $moneyCours->get(),
                 'category' => $category->get(),

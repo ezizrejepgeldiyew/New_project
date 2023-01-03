@@ -401,6 +401,16 @@
   array (
     'driver' => 'gd',
   ),
+  'locale' => 
+  array (
+    'locales' => 
+    array (
+      0 => 'da',
+      1 => 'en',
+      2 => 'zh_CN',
+    ),
+    'default_locale' => 'en',
+  ),
   'logging' => 
   array (
     'default' => 'stack',
